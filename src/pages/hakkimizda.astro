@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Brands from '../components/Brands.astro';
@@ -20,7 +21,7 @@ import ContactSheet from '../components/ContactSheet.astro';
   </section>
 
   <div class="container">
-    <figure class="photo"><img src="/images/site/lagom-felsefesi.jpg" alt="" /></figure>
+    <figure class="photo"><img src={url('/images/site/lagom-felsefesi.jpg')} alt="" /></figure>
   </div>
 
   <section class="sheet first">
@@ -57,7 +58,7 @@ import ContactSheet from '../components/ContactSheet.astro';
         <p class="big">1945’ten bu yana dünyanın en büyük pompa üreticisinin yetkili bayiiyiz.</p>
         <div>
           <p class="muted">Grundfos ürünlerinin satışını, projelendirmesini ve satış sonrası servisini uzman ekibimizle sağlıyoruz.</p>
-          <a href="/grundfos" class="link">Yetkili bayilik hakkında <Icon name="arrow" size={16} /></a>
+          <a href={url('/grundfos')} class="link">Yetkili bayilik hakkında <Icon name="arrow" size={16} /></a>
         </div>
       </div>
     </div>

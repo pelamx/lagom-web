@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import TitleBlock from '../components/TitleBlock.astro';
@@ -31,7 +32,7 @@ const range = [
   </section>
 
   <div class="container">
-    <figure class="photo"><img src="/images/site/grundfos.jpg" alt="Grundfos pompa ürün gamı" /></figure>
+    <figure class="photo"><img src={url('/images/site/grundfos.jpg')} alt="Grundfos pompa ürün gamı" /></figure>
     <TitleBlock
       cells={[
         { label: 'Kuruluş', value: '1945, Danimarka' },
@@ -52,7 +53,7 @@ const range = [
             kullanılır. Firma, pompaların yanı sıra elektrik motorları da üretir.
           </p>
           <p>Bu ürünlerin tamamını tedarik ediyor, projeye uygun olanı seçmenize yardımcı oluyoruz.</p>
-          <a href="/urunler" class="link">Öne çıkan ürünler <Icon name="arrow" size={16} /></a>
+          <a href={url('/urunler')} class="link">Öne çıkan ürünler <Icon name="arrow" size={16} /></a>
         </div>
         <ul class="dash-list">{range.map((r) => <li>{r}</li>)}</ul>
       </div>
@@ -70,7 +71,7 @@ const range = [
             onarım hizmetleriyle ürünlerin en iyi durumda ve en yüksek verimle çalışmasını güvence altına alırız.
           </p>
           <p>Endüstriyel ve bireysel her türlü su gereksinimi için, ihtiyaca tam uyan Grundfos çözümünü birlikte belirleriz.</p>
-          <a href="/hizmetler" class="link">Hizmetler <Icon name="arrow" size={16} /></a>
+          <a href={url('/hizmetler')} class="link">Hizmetler <Icon name="arrow" size={16} /></a>
         </div>
       </div>
     </div>

@@ -25,6 +25,14 @@ npm run preview
 
 Astro 6 (Node ≥ 22.12). Çıktı tamamen statiktir; herhangi bir statik hostinge (Netlify, Vercel, Cloudflare Pages, cPanel) kök dizine yüklenebilir.
 
+## Yayın
+
+`main` dalına her push'ta GitHub Actions siteyi **https://pelamx.github.io/lagom-web/** adresine yayınlar (`.github/workflows/deploy.yml`).
+
+- Bu adres bir önizlemedir: alt klasörde çalıştığı için sayfalara `noindex` eklenir, arama motorlarında gerçek siteyle yarışmaz.
+- Site `lagommuhendislik.com` alan adına taşınınca `BASE_PATH` ortam değişkeni kaldırılır; kod değişikliği gerekmez.
+- İç linkler ve görseller için her zaman `src/lib/url.ts` içindeki `url()` kullanılmalı.
+
 ## Yapı
 
 ```

@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import ProductGrid from '../../components/ProductGrid.astro';
@@ -22,7 +23,7 @@ const next = solutions[(i + 1) % solutions.length];
   <section class="page-head">
     <div class="container">
       <nav class="crumbs" aria-label="Sayfa yolu">
-        <a href="/">Ana sayfa</a><span>/</span><a href="/uygulama-alanlari">Uygulama alanları</a><span>/</span><span>{solution.title}</span>
+        <a href={url('/')}>Ana sayfa</a><span>/</span><a href={url('/uygulama-alanlari')}>Uygulama alanları</a><span>/</span><span>{solution.title}</span>
       </nav>
       <div class="sheet-grid">
         <div class="sheet-label">{String(i + 1).padStart(2, '0')} / {String(solutions.length).padStart(2, '0')}</div>
@@ -35,7 +36,7 @@ const next = solutions[(i + 1) % solutions.length];
   </section>
 
   <div class="container">
-    <figure class="photo"><img src={solution.image} alt="" /></figure>
+    <figure class="photo"><img src={url(solution.image)} alt="" /></figure>
   </div>
 
   <section class="sheet first">
@@ -61,7 +62,7 @@ const next = solutions[(i + 1) % solutions.length];
   <section class="sheet next">
     <div class="container sheet-grid">
       <div class="sheet-label">Sonraki</div>
-      <a href={`/uygulama-alanlari/${next.slug}`} class="next-link">{next.title} <Icon name="arrow" size={28} /></a>
+      <a href={url(`/uygulama-alanlari/${next.slug}`)} class="next-link">{next.title} <Icon name="arrow" size={28} /></a>
     </div>
   </section>
 

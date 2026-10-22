@@ -1,11 +1,12 @@
 ---
+import { url } from '../lib/url';
 import { site } from '../data/site';
 ---
 
 <div class="mobile-bar" role="navigation" aria-label="Hızlı iletişim">
   <a href={site.phoneHref}>Ara</a>
   <a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp</a>
-  <a href="/iletisim#teklif" class="accent">Teklif iste</a>
+  <a href={url('/iletisim#teklif')} class="accent">Teklif iste</a>
 </div>
 
 <style>

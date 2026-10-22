@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import ContactSheet from '../components/ContactSheet.astro';
@@ -42,7 +43,7 @@ import { services } from '../data/services';
           <p class="lead">
             Yetkili bayi olarak Grundfos ürünlerinin uzun ömürlü ve sorunsuz çalışması için düzenli bakım, onarım ve teknik destek sağlıyoruz.
           </p>
-          <a href="/grundfos" class="link">Grundfos yetkili bayiliği <Icon name="arrow" size={16} /></a>
+          <a href={url('/grundfos')} class="link">Grundfos yetkili bayiliği <Icon name="arrow" size={16} /></a>
         </div>
         <ul class="dash-list">
           <li>Arıza tespiti ve yerinde onarım</li>

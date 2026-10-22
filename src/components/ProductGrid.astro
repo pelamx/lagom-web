@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import type { Product } from '../data/products';
 import { products as all } from '../data/products';
 
@@ -12,13 +13,13 @@ const code = (p: Product) => `P-${String(all.indexOf(p) + 1).padStart(2, '0')}`;
 <ul class="catalog">
   {products.map((p) => (
     <li>
-      <a href={`/urunler/${p.slug}`}>
+      <a href={url(`/urunler/${p.slug}`)}>
         <div class="meta mono">
           <span>{code(p)}</span>
           <span>{p.category}</span>
         </div>
         <div class="media">
-          <img src={p.image} alt={p.name} width="600" height="600" loading="lazy" />
+          <img src={url(p.image)} alt={p.name} width="600" height="600" loading="lazy" />
         </div>
         <h3>{p.name}</h3>
         {p.specs.length > 0 && (

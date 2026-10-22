@@ -2,6 +2,11 @@ import { defineConfig } from 'astro/config';
 import { products } from './src/data/products.ts';
 import { solutions } from './src/data/solutions.ts';
 
+// SITE / BASE_PATH are set by the GitHub Pages workflow; locally and on the real domain the site lives at the root.
+const site = process.env.SITE ?? 'https://lagommuhendislik.com';
+const base = process.env.BASE_PATH ?? '/';
+const withBase = (path) => `${base.replace(/\/$/, '')}${path}`;
+
 // Old lagommuhendislik.com URLs → new pages, so existing links and search results keep working.
 const legacy = {
   ...Object.fromEntries(products.map((p) => [p.legacy, `/urunler/${p.slug}`])),
@@ -24,6 +29,7 @@ const legacy = {
 };
 
 export default defineConfig({
-  site: 'https://lagommuhendislik.com',
-  redirects: legacy,
+  site,
+  base,
+  redirects: Object.fromEntries(Object.entries(legacy).map(([from, to]) => [from, withBase(to)])),
 });

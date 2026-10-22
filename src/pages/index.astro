@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import TitleBlock from '../components/TitleBlock.astro';
@@ -48,14 +49,14 @@ const jsonLd = {
             Bina, endüstri ve altyapı projelerinde pompa ve hidrofor sistemlerini seçiyor, tedarik ediyor, devreye alıyor ve servisini veriyoruz.
           </p>
           <div class="btn-row">
-            <a href="/iletisim#teklif" class="btn btn-accent">Teklif iste <Icon name="arrow" size={16} /></a>
-            <a href="/urunler" class="btn">Ürünler</a>
+            <a href={url('/iletisim#teklif')} class="btn btn-accent">Teklif iste <Icon name="arrow" size={16} /></a>
+            <a href={url('/urunler')} class="btn">Ürünler</a>
           </div>
         </div>
       </div>
 
       <figure class="hero-photo">
-        <img src="/images/site/depo.jpg" alt="Raflarda Grundfos pompa kutuları" width="1920" height="760" fetchpriority="high" />
+        <img src={url('/images/site/depo.jpg')} alt="Raflarda Grundfos pompa kutuları" width="1920" height="760" fetchpriority="high" />
       </figure>
       <TitleBlock
         cells={[
@@ -84,7 +85,7 @@ const jsonLd = {
       <div>
         <div class="sheet-head">
           <h2>Grundfos ürünleri</h2>
-          <a href="/urunler" class="link">Tüm ürünler <Icon name="arrow" size={16} /></a>
+          <a href={url('/urunler')} class="link">Tüm ürünler <Icon name="arrow" size={16} /></a>
         </div>
       </div>
     </div>
@@ -114,7 +115,7 @@ const jsonLd = {
       <div>
         <div class="sheet-head">
           <h2>Seçimden bakıma kadar.</h2>
-          <a href="/hizmetler" class="link">Hizmetler <Icon name="arrow" size={16} /></a>
+          <a href={url('/hizmetler')} class="link">Hizmetler <Icon name="arrow" size={16} /></a>
         </div>
         <ol class="steps">
           {services.map((s, i) => (

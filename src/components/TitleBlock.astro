@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 /**
  * Engineering-drawing title block (antet): a ruled row of label/value cells.
  */
@@ -12,7 +13,7 @@ const { cells } = Astro.props;
   {cells.map((c) => (
     <div>
       <dt>{c.label}</dt>
-      <dd>{c.href ? <a href={c.href}>{c.value}</a> : c.value}</dd>
+      <dd>{c.href ? <a href={url(c.href)}>{c.value}</a> : c.value}</dd>
     </div>
   ))}
 </dl>
