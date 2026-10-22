@@ -1,0 +1,68 @@
+---
+/**
+ * Picks a language from the visitor's country (IP) on their first visit.
+ *
+ * GitHub Pages is static, so the lookup happens in the browser via GeoJS (one request per visitor,
+ * cached in localStorage). It only acts on Turkish (unprefixed) URLs: a /en, /ru or /uz link is an
+ * explicit choice and is left alone. A language picked with the header buttons always wins.
+ * Bots are never redirected. `?geo=XX` simulates a country for testing.
+ */
+import { alternates, parse, defaultLocale } from '../i18n';
+
+const { locale, key } = parse(Astro.url);
+const active = locale === defaultLocale && key !== null;
+const alts = Object.fromEntries(alternates(Astro.url).map((a) => [a.locale, a.href]));
+---
+
+{active && (
+  <script is:inline define:vars={{ alts }}>
+    (function () {
+      var COUNTRY_LANG = { UZ: 'uz', RU: 'ru', BY: 'ru', KZ: 'ru', KG: 'ru', TJ: 'ru', TM: 'ru', TR: 'tr', AZ: 'tr' };
+      var store = {
+        get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+        set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+      };
+      if (/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent)) return;
+
+      function go(lang) {
+        if (!lang || lang === 'tr' || !alts[lang]) return;
+        var params = new URLSearchParams(location.search);
+        params.delete('geo');
+        var query = params.toString();
+        location.replace(alts[lang] + (query ? '?' + query : '') + location.hash);
+      }
+      function fromCountry(code) {
+        return COUNTRY_LANG[code] || 'en';
+      }
+      function fromBrowser() {
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var l = String(langs[i]).slice(0, 2).toLowerCase();
+          if (l === 'tr' || l === 'en' || l === 'ru' || l === 'uz') return l;
+        }
+        return 'en';
+      }
+
+      var simulated = new URLSearchParams(location.search).get('geo');
+      if (simulated) return go(fromCountry(simulated.toUpperCase()));
+
+      var chosen = store.get('lang');
+      if (chosen) return go(chosen);
+
+      var cached = store.get('geo-country');
+      if (cached) return go(fromCountry(cached));
+
+      var ctrl = 'AbortController' in window ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 1500);
+      fetch('https://get.geojs.io/v1/ip/country.json', ctrl ? { signal: ctrl.signal } : undefined)
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          clearTimeout(timer);
+          var code = String(d.country || '').toUpperCase();
+          if (code) store.set('geo-country', code);
+          go(fromCountry(code));
+        })
+        .catch(function () { go(fromBrowser()); });
+    })();
+  </script>
+)}

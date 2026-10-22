@@ -4,6 +4,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
+import LocaleRedirect from '../components/LocaleRedirect.astro';
 import { site } from '../data/site';
 import { useT, alternates, languages, defaultLocale } from '../i18n';
 
@@ -45,6 +46,7 @@ const isPreview = import.meta.env.BASE_URL !== '/';
         if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
       } catch {}
     </script>
+    <LocaleRedirect />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={languages[locale].og} />
