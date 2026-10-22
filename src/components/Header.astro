@@ -30,6 +30,11 @@ const langs = alternates(Astro.url);
           </li>
         ))}
       </ul>
+      <button class="nav-theme theme-btn" type="button">
+        <span class="i-moon"><Icon name="moon" size={17} /></span>
+        <span class="i-sun"><Icon name="sun" size={17} /></span>
+        {t.ui.theme}
+      </button>
       <div class="nav-contact">
         <a href={site.phoneHref}>{t.site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
@@ -38,7 +43,6 @@ const langs = alternates(Astro.url);
     </nav>
 
     <div class="actions">
-      <a href={site.phoneHref} class="phone mono">{t.site.phone}</a>
       <div class="langs" role="group" aria-label={t.ui.language}>
         {langs.map((l) => (
           <a
@@ -70,15 +74,26 @@ const langs = alternates(Astro.url);
     menu.setAttribute('aria-expanded', String(open));
   });
 
+  // A language picked by hand overrides IP-based detection from now on.
+  document.querySelectorAll<HTMLAnchorElement>('.langs a').forEach((a) =>
+    a.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', a.hreflang);
+      } catch {}
+    }),
+  );
+
   const root = document.documentElement;
-  document.querySelector('.theme-btn')?.addEventListener('click', () => {
-    const current = root.dataset.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem('theme', next);
-    } catch {}
-  });
+  document.querySelectorAll('.theme-btn').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const current = root.dataset.theme ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch {}
+    }),
+  );
 </script>
 
 <style>
@@ -86,25 +101,35 @@ const langs = alternates(Astro.url);
     position: sticky;
     top: 0;
     z-index: 50;
+    border-bottom: 1px solid var(--line);
+  }
+  /* The blur lives on a pseudo-element: backdrop-filter on .header itself would make it the containing
+     block for the fixed mobile menu, squeezing the menu into the header. */
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
     background: var(--header-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
   }
-  .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; }
-  .logo { flex-shrink: 0; }
-  .logo img { height: 34px; width: auto; filter: var(--logo-filter); }
+  .header-inner { display: flex; align-items: center; gap: 36px; height: calc(var(--header-h) - 1px); }
+  .logo { flex-shrink: 0; display: block; }
+  .logo img { width: var(--logo-w); height: auto; filter: var(--logo-filter); }
 
   .nav { flex: 1; min-width: 0; }
   .nav ul { display: flex; gap: 24px; }
   .nav ul a { font-size: 0.95rem; color: var(--ink-2); padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; transition: color 0.12s, border-color 0.12s; }
   .nav ul a:hover { color: var(--ink); }
   .nav ul a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--accent); }
-  .nav-contact { display: none; }
+  .nav-contact,
+  .nav-theme { display: none; }
 
   .actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-  .phone { margin-right: 6px; color: var(--ink-2); font-size: 0.85rem; white-space: nowrap; }
-  .phone:hover { color: var(--ink); }
 
   /* language switch: a ruled segmented control */
   .langs { display: inline-flex; border: 1px solid var(--line); height: 40px; }
@@ -146,23 +171,22 @@ const langs = alternates(Astro.url);
     :global(:root:not([data-theme='light'])) .i-moon { display: none; }
   }
 
-  @media (max-width: 1280px) {
-    .phone { display: none; }
-  }
   @media (max-width: 1180px) {
     .header-inner { gap: 28px; }
     .nav ul { gap: 18px; }
     .nav ul a { font-size: 0.9rem; }
   }
 
-  @media (max-width: 1060px) {
-    .header-inner { height: 60px; justify-content: space-between; gap: 12px; }
-    .logo img { height: 28px; }
+  @media (max-width: 1120px) {
+    .header-inner { justify-content: space-between; gap: 12px; }
     .menu-btn { display: inline-grid; }
     .nav {
       display: none;
       position: fixed;
-      inset: 60px 0 0;
+      top: var(--header-h);
+      right: 0;
+      bottom: 0;
+      left: 0;
       background: var(--bg);
       padding: 8px var(--gutter) 32px;
       overflow-y: auto;
@@ -185,5 +209,27 @@ const langs = alternates(Astro.url);
     .langs { height: 36px; }
     .langs a { min-width: 28px; padding: 0 4px; font-size: 0.7rem; }
     .square { width: 36px; height: 36px; }
+  }
+  /* Small phones: the full-size logo, language buttons and menu fill the row, so the theme switch moves into the menu. */
+  @media (max-width: 400px) {
+    .actions .theme-btn { display: none; }
+    .nav-theme {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .langs a { min-width: 26px; padding: 0 3px; }
+  }
+  @media (max-width: 350px) {
+    .langs a { min-width: 24px; padding: 0 2px; }
+    .square { width: 34px; height: 34px; }
   }
 </style>

@@ -158,4 +158,12 @@ const symbols: Record<StageKey, string> = {
     .return-pipe span { left: auto; right: 0; top: 50%; bottom: auto; transform: translate(50%, -50%) rotate(90deg); padding: 0 8px; }
   }
   @keyframes flow-down { to { background-position: 0 16px; } }
+
+  /* Windows contrast themes drop background images, which would erase the supply pipes: draw them as borders. */
+  @media (forced-colors: active) {
+    .stage:not(:last-child)::after { background: none; animation: none; height: 0; border-top: 2px dashed Highlight; }
+  }
+  @media (forced-colors: active) and (max-width: 900px) {
+    .stage:not(:last-child)::after { height: auto; width: 0; border-top: 0; border-left: 2px dashed Highlight; }
+  }
 </style>

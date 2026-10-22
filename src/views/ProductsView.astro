@@ -104,8 +104,9 @@ const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun
 
 <script>
   // Highlight the brand currently in view in the sticky bar.
+  const bar = document.querySelector<HTMLUListElement>('.brand-bar ul')!;
   const links = new Map(
-    [...document.querySelectorAll<HTMLAnchorElement>('.brand-bar a')].map((a) => [a.dataset.target, a]),
+    [...bar.querySelectorAll<HTMLAnchorElement>('a')].map((a) => [a.dataset.target, a]),
   );
   const observer = new IntersectionObserver(
     (entries) => {
@@ -113,8 +114,13 @@ const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun
         if (!e.isIntersecting) continue;
         links.forEach((a) => a.removeAttribute('aria-current'));
         const active = links.get(e.target.id);
-        active?.setAttribute('aria-current', 'true');
-        active?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        if (!active) continue;
+        active.setAttribute('aria-current', 'true');
+        // Scroll only the bar sideways; scrollIntoView would also touch the page and break momentum scrolling on phones.
+        const { offsetLeft, offsetWidth } = active.parentElement!;
+        if (offsetLeft < bar.scrollLeft || offsetLeft + offsetWidth > bar.scrollLeft + bar.clientWidth) {
+          bar.scrollTo({ left: offsetLeft - 16, behavior: 'smooth' });
+        }
       }
     },
     { rootMargin: '-45% 0px -50% 0px' },
@@ -128,7 +134,7 @@ const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun
 
   .brand-bar {
     position: sticky;
-    top: 68px;
+    top: var(--header-h);
     z-index: 30;
     background: var(--header-bg);
     backdrop-filter: blur(10px);
@@ -136,7 +142,7 @@ const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--line);
   }
-  .brand-bar ul { display: flex; gap: 28px; overflow-x: auto; scrollbar-width: none; }
+  .brand-bar ul { position: relative; display: flex; gap: 28px; overflow-x: auto; scrollbar-width: none; }
   .brand-bar ul::-webkit-scrollbar { display: none; }
   .brand-bar a {
     display: block;
@@ -150,7 +156,7 @@ const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun
   .brand-bar a:hover { color: var(--ink); }
   .brand-bar a[aria-current] { color: var(--ink); border-bottom-color: var(--accent); }
 
-  .brand { scroll-margin-top: 120px; }
+  .brand { scroll-margin-top: calc(var(--header-h) + 52px); }
   .rail { display: grid; gap: 6px; align-content: start; }
   .rail .stage { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); }
   .dot { width: 7px; height: 7px; background: var(--accent); display: inline-block; flex-shrink: 0; }
@@ -182,9 +188,6 @@ const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun
   .featured .sheet-head { margin-bottom: 24px; }
   .brand-cta { margin-top: 32px; white-space: normal; text-align: left; height: auto; min-height: 50px; padding-block: 10px; }
 
-  @media (max-width: 1060px) {
-    .brand-bar { top: 60px; }
-  }
   @media (max-width: 920px) {
     .brand-head { grid-template-columns: 1fr; }
     .rail { display: flex; flex-wrap: wrap; gap: 4px 18px; }
