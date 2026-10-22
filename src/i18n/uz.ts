@@ -71,10 +71,10 @@ const uz: typeof tr = {
 
   home: {
     label: 'Grundfos rasmiy dileri — Beyoğlu, Istanbul',
-    title: ['To‘g‘ri mahsulot.', 'To‘g‘ri xizmat.', 'Na kam, na ortiq.'],
+    title: ['To‘g‘ri mahsulot.', 'To‘g‘ri xizmat.'],
     lead: 'Bino, sanoat va infratuzilma loyihalari uchun nasos va bosim oshirish tizimlarini tanlaymiz, yetkazib beramiz, ishga tushiramiz va xizmat ko‘rsatamiz.',
     products: 'Mahsulotlar',
-    photoAlt: 'Flanesli tirsaklari bilan ko‘k suv quvurlari',
+    drawing: { alt: 'Beyoğlu silueti: Galata minorasi, masjid va binolarning me’moriy fasad chizmasi', title: 'Beyoğlu silueti — fasad', scale: 'Masshtab 1:500', sheet: 'Varaq 01' },
     block: { authority: 'Maqom', authorityValue: 'Grundfos rasmiy dileri', location: 'Manzil', hours: 'Ish vaqti', phone: 'Telefon' },
     lagomLabel: 'Lagom',
     lagomLang: '(shved tilida)',

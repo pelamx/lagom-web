@@ -70,10 +70,10 @@ const en: typeof tr = {
 
   home: {
     label: 'Authorised Grundfos Dealer — Beyoğlu, Istanbul',
-    title: ['The right product.', 'The right service.', 'No more, no less.'],
+    title: ['The right product.', 'The right service.'],
     lead: 'We select, supply, commission and service pump and booster systems for building, industrial and infrastructure projects.',
     products: 'Products',
-    photoAlt: 'Blue water pipework with flanged elbows',
+    drawing: { alt: 'Beyoğlu skyline: architectural elevation drawing of Galata Tower, a mosque and buildings', title: 'Beyoğlu skyline — elevation', scale: 'Scale 1:500', sheet: 'Sheet 01' },
     block: { authority: 'Status', authorityValue: 'Authorised Grundfos dealer', location: 'Location', hours: 'Opening hours', phone: 'Phone' },
     lagomLabel: 'Lagom',
     lagomLang: '(Swedish)',

@@ -69,10 +69,10 @@ export default {
 
   home: {
     label: 'Grundfos Yetkili Bayi — Beyoğlu, İstanbul',
-    title: ['Doğru ürün.', 'Doğru hizmet.', 'Ne eksik, ne fazla.'],
+    title: ['Doğru ürün.', 'Doğru hizmet.'],
     lead: 'Bina, endüstri ve altyapı projelerinde pompa ve hidrofor sistemlerini seçiyor, tedarik ediyor, devreye alıyor ve servisini veriyoruz.',
     products: 'Ürünler',
-    photoAlt: 'Flanşlı dirsekleriyle mavi su tesisatı boruları',
+    drawing: { alt: 'Beyoğlu silueti: Galata Kulesi, cami ve binaların mimari cephe çizimi', title: 'Beyoğlu silueti — cephe', scale: 'Ölçek 1:500', sheet: 'Pafta 01' },
     block: { authority: 'Yetki', authorityValue: 'Grundfos yetkili bayi', location: 'Konum', hours: 'Çalışma saatleri', phone: 'Telefon' },
     lagomLabel: 'Lagom',
     lagomLang: '(İsveççe)',
