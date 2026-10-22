@@ -1,41 +1,61 @@
 ---
 import { url } from '../lib/url';
 import Icon from './Icon.astro';
-import { nav, site } from '../data/site';
+import { site } from '../data/site';
+import { useT, href, parse, alternates, languages, type PageKey } from '../i18n';
 
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isActive = (href: string) => path === url(href) || path.startsWith(url(href) + '/');
+const { locale, t } = useT(Astro.url);
+const current = parse(Astro.url).key;
+const nav: { key: PageKey; label: string }[] = [
+  { key: 'products', label: t.nav.products },
+  { key: 'solutions', label: t.nav.solutions },
+  { key: 'services', label: t.nav.services },
+  { key: 'about', label: t.nav.about },
+  { key: 'contact', label: t.nav.contact },
+];
+const langs = alternates(Astro.url);
 ---
 
 <header class="header">
   <div class="container header-inner">
-    <a href={url('/')} class="logo" aria-label={`${site.name} ana sayfa`}>
+    <a href={href(locale, 'home')} class="logo" aria-label={`${site.name} ${t.ui.homeAria}`}>
       <img src={url('/images/site/logo-dark.png')} alt={site.name} width="372" height="168" />
     </a>
 
-    <nav class="nav" id="site-nav" aria-label="Ana menü">
+    <nav class="nav" id="site-nav" aria-label={t.ui.mainMenu}>
       <ul>
         {nav.map((item) => (
           <li>
-            <a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+            <a href={href(locale, item.key)} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
           </li>
         ))}
       </ul>
       <div class="nav-contact">
-        <a href={site.phoneHref}>{site.phone}</a>
+        <a href={site.phoneHref}>{t.site.phone}</a>
         <a href={`mailto:${site.email}`}>{site.email}</a>
-        <span class="muted">{site.hours}</span>
+        <span class="muted">{t.site.hours}</span>
       </div>
     </nav>
 
     <div class="actions">
-      <a href={site.phoneHref} class="phone mono">{site.phone}</a>
-      <button class="square theme-btn" type="button" aria-label="Açık / koyu tema" title="Açık / koyu tema">
+      <a href={site.phoneHref} class="phone mono">{t.site.phone}</a>
+      <div class="langs" role="group" aria-label={t.ui.language}>
+        {langs.map((l) => (
+          <a
+            href={l.href}
+            hreflang={l.locale}
+            lang={l.locale}
+            title={languages[l.locale].name}
+            aria-current={l.locale === locale ? 'true' : undefined}
+          >{languages[l.locale].label}</a>
+        ))}
+      </div>
+      <button class="square theme-btn" type="button" aria-label={t.ui.theme} title={t.ui.theme}>
         <span class="i-moon"><Icon name="moon" size={17} /></span>
         <span class="i-sun"><Icon name="sun" size={17} /></span>
       </button>
-      <a href={url('/iletisim#teklif')} class="btn btn-accent btn-sm cta">Teklif iste</a>
-      <button class="square menu-btn" type="button" aria-label="Menü" aria-expanded="false" aria-controls="site-nav">
+      <a href={href(locale, 'contact', undefined, '#teklif')} class="btn btn-accent btn-sm cta">{t.ui.quote}</a>
+      <button class="square menu-btn" type="button" aria-label={t.ui.menu} aria-expanded="false" aria-controls="site-nav">
         <span class="i-open"><Icon name="menu" size={20} /></span>
         <span class="i-close"><Icon name="close" size={20} /></span>
       </button>
@@ -71,19 +91,37 @@ const isActive = (href: string) => path === url(href) || path.startsWith(url(hre
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
-  .header-inner { display: flex; align-items: center; gap: 40px; height: 68px; }
+  .header-inner { display: flex; align-items: center; gap: 36px; height: 68px; }
+  .logo { flex-shrink: 0; }
   .logo img { height: 34px; width: auto; filter: var(--logo-filter); }
 
-  .nav { flex: 1; }
-  .nav ul { display: flex; gap: 28px; }
-  .nav ul a { font-size: 0.95rem; color: var(--ink-2); padding: 6px 0; border-bottom: 1px solid transparent; transition: color 0.12s, border-color 0.12s; }
+  .nav { flex: 1; min-width: 0; }
+  .nav ul { display: flex; gap: 24px; }
+  .nav ul a { font-size: 0.95rem; color: var(--ink-2); padding: 6px 0; border-bottom: 1px solid transparent; white-space: nowrap; transition: color 0.12s, border-color 0.12s; }
   .nav ul a:hover { color: var(--ink); }
   .nav ul a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--accent); }
   .nav-contact { display: none; }
 
-  .actions { display: flex; align-items: center; gap: 10px; }
-  .phone { margin-right: 10px; color: var(--ink-2); font-size: 0.85rem; }
+  .actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .phone { margin-right: 6px; color: var(--ink-2); font-size: 0.85rem; white-space: nowrap; }
   .phone:hover { color: var(--ink); }
+
+  /* language switch: a ruled segmented control */
+  .langs { display: inline-flex; border: 1px solid var(--line); height: 40px; }
+  .langs a {
+    display: grid;
+    place-items: center;
+    min-width: 34px;
+    padding: 0 6px;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+    transition: color 0.12s, background 0.12s;
+  }
+  .langs a + a { border-left: 1px solid var(--line); }
+  .langs a:hover { color: var(--ink); }
+  .langs a[aria-current] { background: var(--ink); color: var(--bg); }
+
   .square {
     display: inline-grid;
     place-items: center;
@@ -108,13 +146,17 @@ const isActive = (href: string) => path === url(href) || path.startsWith(url(hre
     :global(:root:not([data-theme='light'])) .i-moon { display: none; }
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1280px) {
     .phone { display: none; }
-    .nav ul { gap: 20px; }
+  }
+  @media (max-width: 1180px) {
+    .header-inner { gap: 28px; }
+    .nav ul { gap: 18px; }
+    .nav ul a { font-size: 0.9rem; }
   }
 
-  @media (max-width: 920px) {
-    .header-inner { height: 60px; justify-content: space-between; gap: 16px; }
+  @media (max-width: 1060px) {
+    .header-inner { height: 60px; justify-content: space-between; gap: 12px; }
     .logo img { height: 28px; }
     .menu-btn { display: inline-grid; }
     .nav {
@@ -126,7 +168,7 @@ const isActive = (href: string) => path === url(href) || path.startsWith(url(hre
       overflow-y: auto;
     }
     .nav ul { flex-direction: column; gap: 0; }
-    .nav ul a { display: block; font-size: 1.6rem; padding: 16px 0; border-bottom: 1px solid var(--line); color: var(--ink); letter-spacing: -0.02em; }
+    .nav ul a { display: block; font-size: 1.6rem; padding: 16px 0; border-bottom: 1px solid var(--line); color: var(--ink); letter-spacing: -0.02em; white-space: normal; }
     .nav ul a[aria-current='page'] { border-bottom-color: var(--line); color: var(--accent); }
     .nav-contact { display: grid; gap: 8px; margin-top: 28px; font-family: var(--mono); font-size: 0.88rem; }
     :global(body.nav-open) .nav { display: block; }
@@ -135,7 +177,13 @@ const isActive = (href: string) => path === url(href) || path.startsWith(url(hre
     :global(body.nav-open) .menu-btn .i-close { display: inline; }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     .cta { display: none; }
+  }
+  @media (max-width: 420px) {
+    .actions { gap: 6px; }
+    .langs { height: 36px; }
+    .langs a { min-width: 28px; padding: 0 4px; font-size: 0.7rem; }
+    .square { width: 36px; height: 36px; }
   }
 </style>

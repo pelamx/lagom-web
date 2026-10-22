@@ -1,0 +1,82 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Brands from '../components/Brands.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
+const a = t.about;
+---
+
+<Base title={a.metaTitle} description={a.metaDescription}>
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{a.label}</div>
+      <div>
+        <h1>{a.title}</h1>
+        <p class="lead">{a.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <figure class="photo"><img src={url('/images/site/lagom-felsefesi.jpg')} alt="" /></figure>
+  </div>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{a.nameLabel}</div>
+      <div class="cols">
+        <p class="big">{a.nameBig}</p>
+        <div class="prose">{a.nameText.map((p) => <p>{p}</p>)}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{a.missionLabel}</div>
+      <p class="big">{a.mission}</p>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{a.grundfosLabel}</div>
+      <div class="cols">
+        <p class="big">{a.grundfosBig}</p>
+        <div>
+          <p class="muted">{a.grundfosText}</p>
+          <a href={href(locale, 'grundfos')} class="link">{a.grundfosLink} <Icon name="arrow" size={16} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" id="markalar">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{a.brandsLabel}</div>
+      <div>
+        <div class="sheet-head"><h2>{a.brandsTitle}</h2></div>
+        <Brands />
+      </div>
+    </div>
+  </section>
+
+  <ContactSheet />
+</Base>
+
+<style>
+  .photo { margin: 0 0 var(--section); aspect-ratio: 21 / 8; overflow: hidden; background: var(--sunk); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); }
+  .big { font-size: clamp(1.45rem, 2.6vw, 2.1rem); line-height: 1.25; letter-spacing: -0.02em; max-width: 26ch; margin: 0; }
+  .prose p { color: var(--ink-2); }
+  .cols .muted { margin-bottom: 20px; max-width: 46ch; }
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+    .photo { aspect-ratio: 16 / 9; }
+  }
+</style>

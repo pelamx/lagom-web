@@ -1,0 +1,58 @@
+---
+/**
+ * Every page in every non-default language (en, ru, uz), under /<lang>/<english path>.
+ * Turkish pages live in their own files at the root.
+ */
+import HomeView from '../../views/HomeView.astro';
+import ProductsView from '../../views/ProductsView.astro';
+import ProductView from '../../views/ProductView.astro';
+import SolutionsView from '../../views/SolutionsView.astro';
+import SolutionView from '../../views/SolutionView.astro';
+import ServicesView from '../../views/ServicesView.astro';
+import AboutView from '../../views/AboutView.astro';
+import GrundfosView from '../../views/GrundfosView.astro';
+import ContactView from '../../views/ContactView.astro';
+import { products, type Product } from '../../data/products';
+import { solutions, type Solution } from '../../data/solutions';
+import { locales, defaultLocale, segment, solutionSlug, type PageKey } from '../../i18n';
+
+type View = PageKey | 'product' | 'solution';
+type Props = { view: View; product?: Product; solution?: Solution };
+
+export function getStaticPaths() {
+  return locales
+    .filter((lang) => lang !== defaultLocale)
+    .flatMap((lang) => {
+      const page = (key: PageKey) => ({ params: { lang, path: segment(lang, key) || undefined }, props: { view: key } });
+      return [
+        page('home'),
+        page('products'),
+        ...products.map((product) => ({
+          params: { lang, path: `${segment(lang, 'products')}/${product.slug}` },
+          props: { view: 'product', product },
+        })),
+        page('solutions'),
+        ...solutions.map((solution) => ({
+          params: { lang, path: `${segment(lang, 'solutions')}/${solutionSlug(lang, solution.id)}` },
+          props: { view: 'solution', solution },
+        })),
+        page('services'),
+        page('about'),
+        page('grundfos'),
+        page('contact'),
+      ];
+    });
+}
+
+const { view, product, solution } = Astro.props as Props;
+---
+
+{view === 'home' && <HomeView />}
+{view === 'products' && <ProductsView />}
+{view === 'product' && <ProductView product={product!} />}
+{view === 'solutions' && <SolutionsView />}
+{view === 'solution' && <SolutionView solution={solution!} />}
+{view === 'services' && <ServicesView />}
+{view === 'about' && <AboutView />}
+{view === 'grundfos' && <GrundfosView />}
+{view === 'contact' && <ContactView />}

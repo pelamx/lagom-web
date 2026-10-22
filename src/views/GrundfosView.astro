@@ -1,0 +1,69 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
+const g = t.grundfos;
+---
+
+<Base title={g.metaTitle} description={g.metaDescription}>
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{g.label}</div>
+      <div>
+        <h1>{g.title}</h1>
+        <p class="lead">{g.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <figure class="photo"><img src={url('/images/site/grundfos.jpg')} alt={g.photoAlt} /></figure>
+    <TitleBlock cells={g.facts} />
+  </div>
+
+  <section class="sheet" style="margin-top: var(--section)">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{g.rangeLabel}</div>
+      <div class="cols">
+        <div class="prose">
+          {g.rangeText.map((p) => <p>{p}</p>)}
+          <a href={href(locale, 'products', undefined, '#grundfos')} class="link">{g.rangeLink} <Icon name="arrow" size={16} /></a>
+        </div>
+        <ul class="dash-list">{g.range.map((r) => <li>{r}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{g.dealerLabel}</div>
+      <div class="cols">
+        <p class="big">{g.dealerBig}</p>
+        <div class="prose">
+          {g.dealerText.map((p) => <p>{p}</p>)}
+          <a href={href(locale, 'services')} class="link">{g.dealerLink} <Icon name="arrow" size={16} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactSheet />
+</Base>
+
+<style>
+  .photo { margin: 0; aspect-ratio: 21 / 8; overflow: hidden; background: var(--sunk); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
+  .cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); }
+  .prose p { color: var(--ink-2); max-width: 56ch; }
+  .prose .link { margin-top: 8px; }
+  .big { font-size: clamp(1.45rem, 2.6vw, 2.1rem); line-height: 1.25; letter-spacing: -0.02em; max-width: 24ch; margin: 0; }
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+    .photo { aspect-ratio: 16 / 9; }
+  }
+</style>

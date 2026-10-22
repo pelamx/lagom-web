@@ -1,13 +1,14 @@
 ---
-import { url } from '../lib/url';
 import Icon from './Icon.astro';
 import { site } from '../data/site';
+import { useT, href } from '../i18n';
 
 interface Props {
   label?: string;
   title?: string;
 }
-const { label = 'İletişim', title = 'Projenizi anlatın, uygun sistemi ve fiyatı biz çıkaralım.' } = Astro.props;
+const { locale, t } = useT(Astro.url);
+const { label = t.contactSheet.label, title = t.contactSheet.title } = Astro.props;
 ---
 
 <section class="sheet">
@@ -15,13 +16,13 @@ const { label = 'İletişim', title = 'Projenizi anlatın, uygun sistemi ve fiya
     <div class="sheet-label">{label}</div>
     <div class="contact">
       <h2>{title}</h2>
-      <a href={site.phoneHref} class="big-phone">{site.phone}</a>
+      <a href={site.phoneHref} class="big-phone">{t.site.phone}</a>
       <div class="row">
         <div class="btn-row">
-          <a href={url('/iletisim#teklif')} class="btn btn-accent">Teklif formu <Icon name="arrow" size={16} /></a>
-          <a href={site.whatsappHref} target="_blank" rel="noopener" class="btn">WhatsApp’tan yazın</a>
+          <a href={href(locale, 'contact', undefined, '#teklif')} class="btn btn-accent">{t.contactSheet.form} <Icon name="arrow" size={16} /></a>
+          <a href={site.whatsappHref} target="_blank" rel="noopener" class="btn">{t.contactSheet.whatsapp}</a>
         </div>
-        <p class="mono muted">{site.email}<br />{site.hours}</p>
+        <p class="mono muted">{site.email}<br />{t.site.hours}</p>
       </div>
     </div>
   </div>
@@ -32,18 +33,20 @@ const { label = 'İletişim', title = 'Projenizi anlatın, uygun sistemi ve fiya
   .big-phone {
     display: inline-block;
     margin: 28px 0 32px;
-    font-size: clamp(2.4rem, 7vw, 5.4rem);
+    font-size: clamp(2.2rem, 7vw, 5.4rem);
     font-weight: 400;
     letter-spacing: -0.04em;
     line-height: 1;
     font-variant-numeric: tabular-nums;
     border-bottom: 2px solid var(--accent);
     padding-bottom: 6px;
+    white-space: nowrap;
   }
   .big-phone:hover { color: var(--accent); }
   .row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; }
   .row p { text-align: right; }
   @media (max-width: 600px) {
     .row p { text-align: left; }
+    .btn-row .btn { white-space: normal; text-align: left; height: auto; min-height: 50px; padding-block: 10px; }
   }
 </style>

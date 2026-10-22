@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { products } from '../data/products';
+import { useT } from '../i18n';
+
+const { t } = useT(Astro.url);
+const c = t.contact;
+const productNames = products.map((p) => t.productData[p.slug as keyof typeof t.productData].name);
+---
+
+<Base title={c.metaTitle} description={c.metaDescription}>
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{c.label}</div>
+      <div>
+        <h1>{c.title}</h1>
+        <p class="lead">{c.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" id="teklif">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{c.formLabel}</div>
+      <div class="layout">
+        <form class="form" id="quote-form" novalidate data-labels={JSON.stringify(c.message)}>
+          <div class="field">
+            <label for="f-name">{c.fields.name}</label>
+            <input id="f-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-phone">{c.fields.phone}</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="f-email">{c.fields.email}</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" />
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-topic">{c.fields.topic}</label>
+              <select id="f-topic" name="topic">
+                {c.topics.map((topic) => <option>{topic}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-product">{c.fields.product}</label>
+              <input id="f-product" name="product" list="product-list" />
+              <datalist id="product-list">{productNames.map((name) => <option value={name} />)}</datalist>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">{c.fields.message}</label>
+            <textarea id="f-msg" name="message" placeholder={c.placeholder}></textarea>
+          </div>
+          <p class="form-error mono" role="alert" hidden>{c.error}</p>
+          <div class="btn-row">
+            <button type="submit" class="btn btn-accent" data-via="mail">{c.sendMail}</button>
+            <button type="submit" class="btn" data-via="whatsapp">{c.sendWhatsapp}</button>
+          </div>
+          <p class="mono muted note">{c.note}</p>
+        </form>
+
+        <dl class="kv info">
+          <div><dt>{c.info.phone}</dt><dd><a href={site.phoneHref}>{t.site.phone}</a></dd></div>
+          <div><dt>{c.info.whatsapp}</dt><dd><a href={site.whatsappHref} target="_blank" rel="noopener">{t.site.whatsapp}</a></dd></div>
+          <div><dt>{c.info.email}</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+          <div><dt>{c.info.hours}</dt><dd>{t.site.hoursShort}</dd></div>
+          <div><dt>{c.info.address}</dt><dd>{t.site.addressLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{c.mapLabel}</div>
+      <div>
+        <div class="map">
+          <iframe src={site.mapsEmbed} title={c.mapTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <a href={site.mapsHref} target="_blank" rel="noopener" class="link map-link">{c.mapOpen}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { site } from '../data/site';
+
+  const form = document.querySelector<HTMLFormElement>('#quote-form')!;
+  const error = form.querySelector<HTMLElement>('.form-error')!;
+  const labels = JSON.parse(form.dataset.labels!) as Record<'name' | 'phone' | 'email' | 'topic' | 'product', string>;
+  const product = new URLSearchParams(location.search).get('urun');
+  if (product) (form.elements.namedItem('product') as HTMLInputElement).value = product;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const get = (k: string) => String(data.get(k) ?? '').trim();
+
+    if (!get('name') || !get('phone')) {
+      error.hidden = false;
+      return;
+    }
+    error.hidden = true;
+
+    const header = [
+      `${labels.name}: ${get('name')}`,
+      `${labels.phone}: ${get('phone')}`,
+      get('email') && `${labels.email}: ${get('email')}`,
+      `${labels.topic}: ${get('topic')}`,
+      get('product') && `${labels.product}: ${get('product')}`,
+    ].filter(Boolean);
+    const body = [header.join('\n'), get('message')].filter(Boolean).join('\n\n');
+    const subject = `${get('topic')}${get('product') ? ` – ${get('product')}` : ''}`;
+
+    const via = (e.submitter as HTMLButtonElement | null)?.dataset.via;
+    if (via === 'whatsapp') {
+      window.open(`${site.whatsappHref}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+    } else {
+      location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+  });
+</script>
+
+<style>
+  .layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .form { display: grid; gap: 18px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-error { color: var(--accent); margin: 0; }
+  .note { margin: 0; }
+  .btn-row .btn { white-space: normal; height: auto; min-height: 50px; padding-block: 10px; }
+  .info dd a:hover { color: var(--accent); }
+  .map { border: 1px solid var(--rule); aspect-ratio: 21 / 9; background: var(--sunk); }
+  .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+  :global(:root[data-theme='dark']) .map iframe { filter: invert(0.9) hue-rotate(180deg) saturate(0.6); }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .map iframe { filter: invert(0.9) hue-rotate(180deg) saturate(0.6); }
+  }
+  .map-link { margin-top: 16px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .map { aspect-ratio: 4 / 3; }
+  }
+  @media (max-width: 520px) {
+    .two { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import { products, productCode, type Product } from '../data/products';
+import { solutions } from '../data/solutions';
+import { site, whatsappWith } from '../data/site';
+import { useT, href } from '../i18n';
+
+interface Props { product: Product }
+const { product } = Astro.props;
+const { locale, t } = useT(Astro.url);
+const text = t.productData[product.slug as keyof typeof t.productData];
+
+const index = products.indexOf(product);
+const code = productCode(product);
+const usedIn = solutions.filter((s) => s.products.includes(product.slug));
+const others = [...products.slice(index + 1), ...products.slice(0, index)].slice(0, 4);
+const quoteHref = href(locale, 'contact', undefined, `?urun=${encodeURIComponent(text.name)}#teklif`);
+---
+
+<Base title={`${text.name} – ${text.category}`} description={text.summary} image={product.image}>
+  <section class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label={t.ui.breadcrumb}>
+        <a href={href(locale, 'home')}>{t.ui.home}</a><span>/</span><a href={href(locale, 'products')}>{t.nav.products}</a><span>/</span><span>{code}</span>
+      </nav>
+
+      <div class="product">
+        <figure class="media">
+          <img src={url(product.image)} alt={text.name} width="600" height="600" />
+          <figcaption class="mono">{code} · {text.name}</figcaption>
+        </figure>
+
+        <div class="info">
+          <p class="mono muted">{text.category}</p>
+          <h1>{text.name}</h1>
+          <p class="lead">{text.summary}</p>
+
+          {text.specs.length > 0 && (
+            <dl class="kv">
+              {text.specs.map((s) => (
+                <div><dt>{s.label}</dt><dd>{s.value}</dd></div>
+              ))}
+            </dl>
+          )}
+
+          <div class="btn-row">
+            <a href={quoteHref} class="btn btn-accent">{t.product.quote} <Icon name="arrow" size={16} /></a>
+            <a href={whatsappWith(t.product.whatsappMessage(text.name))} target="_blank" rel="noopener" class="btn">{t.product.ask}</a>
+          </div>
+          <p class="mono muted">{t.product.phone}: <a href={site.phoneHref} class="tel">{t.site.phone}</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{t.product.description}</div>
+      <div class="details">
+        <div class="prose">
+          {text.body.map((para) => <p>{para}</p>)}
+        </div>
+        <div class="lists">
+          <div>
+            <h3>{t.product.features}</h3>
+            <ul class="dash-list">{text.features.map((f) => <li>{f}</li>)}</ul>
+          </div>
+          <div>
+            <h3>{t.product.applications}</h3>
+            <ul class="tags">{text.applications.map((a) => <li>{a}</li>)}</ul>
+          </div>
+          {usedIn.length > 0 && (
+            <div>
+              <h3>{t.product.related}</h3>
+              <ul class="related">
+                {usedIn.map((s) => (
+                  <li>
+                    <a href={href(locale, 'solutions', s.id)} class="link">
+                      {t.solutionData[s.id as keyof typeof t.solutionData].title} <Icon name="arrow" size={15} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{t.product.others}</div>
+      <div class="sheet-head">
+        <h2>{t.product.fromCatalog}</h2>
+        <a href={href(locale, 'products')} class="link">{t.ui.allProducts} <Icon name="arrow" size={16} /></a>
+      </div>
+    </div>
+    <div class="container">
+      <ProductGrid products={others} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .product { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .media { margin: 0; border: 1px solid var(--rule); background: var(--media-bg); }
+  .media img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; padding: 8%; mix-blend-mode: multiply; }
+  .media figcaption { border-top: 1px solid var(--line); padding: 10px 14px; color: var(--ink-2); background: var(--surface); }
+  .info { display: grid; gap: 20px; align-content: start; padding-top: 8px; min-width: 0; }
+  .info h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); overflow-wrap: break-word; }
+  .info .lead { margin: 0; }
+  .info .btn { white-space: normal; text-align: left; height: auto; min-height: 50px; padding-block: 10px; }
+  .tel { color: var(--ink); }
+  .tel:hover { color: var(--accent); }
+
+  .details { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 5vw, 72px); }
+  .prose p { color: var(--ink-2); font-size: 1.05rem; max-width: 62ch; }
+  .lists { display: grid; gap: 36px; align-content: start; }
+  .lists h3 { font-family: var(--mono); font-size: 0.8rem; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-bottom: 12px; }
+  .related { display: grid; gap: 12px; justify-items: start; }
+
+  @media (max-width: 900px) {
+    .product,
+    .details { grid-template-columns: 1fr; }
+    .media { max-width: 520px; }
+  }
+</style>

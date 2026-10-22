@@ -3,7 +3,10 @@
  * The brand portfolio drawn as a hydronic circuit: each stage is a link in the loop,
  * with its P&ID-style symbol and the brands that supply it.
  */
-import { stages, brandsIn, type StageKey } from '../data/brands';
+import { stageKeys, brandsIn, type StageKey } from '../data/brands';
+import { useT } from '../i18n';
+
+const { t } = useT(Astro.url);
 
 const symbols: Record<StageKey, string> = {
   // boiler with flame
@@ -21,24 +24,24 @@ const symbols: Record<StageKey, string> = {
 
 <div class="loop">
   <ol class="stages">
-    {stages.map((s, i) => (
+    {stageKeys.map((key, i) => (
       <li class="stage">
         <div class="head">
           <span class="mono num">{String(i + 1).padStart(2, '0')}</span>
-          <span class="mono name">{s.name}</span>
+          <span class="mono name">{t.stages[key]}</span>
         </div>
         <div class="node">
-          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" set:html={symbols[s.key]} />
+          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" set:html={symbols[key]} />
         </div>
         <ul class="brands">
-          {brandsIn(s.key).map((b) => (
+          {brandsIn(key).map((b) => (
             <li><a href={`#${b.slug}`}>{b.name}</a></li>
           ))}
         </ul>
       </li>
     ))}
   </ol>
-  <div class="return-pipe" aria-hidden="true"><span class="mono">← Dönüş hattı</span></div>
+  <div class="return-pipe" aria-hidden="true"><span class="mono">← {t.stages.returnLine}</span></div>
 </div>
 
 <style>

@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
+const s = t.services;
+---
+
+<Base title={s.metaTitle} description={s.metaDescription}>
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{s.label}</div>
+      <div>
+        <h1>{s.title}</h1>
+        <p class="lead">{s.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom: var(--section)">
+    <div class="container sheet-grid">
+      <div></div>
+      <ol class="services">
+        {t.services_list.map((item, i) => (
+          <li>
+            <span class="mono muted">{i + 1} / {t.services_list.length}</span>
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{s.scopeLabel}</div>
+      <div class="scope">
+        <div>
+          <h2>{s.scopeTitle}</h2>
+          <p class="lead">{s.scopeLead}</p>
+          <a href={href(locale, 'grundfos')} class="link">{s.scopeLink} <Icon name="arrow" size={16} /></a>
+        </div>
+        <ul class="dash-list">{s.scopeItems.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <ContactSheet title={s.contactTitle} />
+</Base>
+
+<style>
+  .services { border-top: 1px solid var(--rule); }
+  .services li {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 24px;
+    align-items: baseline;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .services h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+  .services p { color: var(--ink-2); max-width: 48ch; }
+  .scope { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); }
+  .scope .lead { margin: 18px 0 24px; }
+  @media (max-width: 800px) {
+    .services li { grid-template-columns: 1fr; gap: 8px; }
+    .scope { grid-template-columns: 1fr; }
+  }
+</style>

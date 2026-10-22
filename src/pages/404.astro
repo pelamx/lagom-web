@@ -1,19 +1,21 @@
 ---
-import { url } from '../lib/url';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
 ---
 
-<Base title="Sayfa bulunamadı">
+<Base title={t.notFound.title}>
   <section class="page-head" style="padding-bottom: var(--section)">
     <div class="container sheet-grid">
       <div class="sheet-label">404</div>
       <div>
-        <h1>Bu sayfa yerinde yok.</h1>
-        <p class="lead">Adres değişmiş ya da sayfa kaldırılmış olabilir.</p>
+        <h1>{t.notFound.title}</h1>
+        <p class="lead">{t.notFound.lead}</p>
         <div class="btn-row" style="margin-top: 32px">
-          <a href={url('/')} class="btn">Ana sayfa</a>
-          <a href={url('/urunler')} class="btn">Ürünler <Icon name="arrow" size={16} /></a>
+          <a href={href(locale, 'home')} class="btn">{t.ui.home}</a>
+          <a href={href(locale, 'products')} class="btn">{t.nav.products} <Icon name="arrow" size={16} /></a>
         </div>
       </div>
     </div>

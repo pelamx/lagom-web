@@ -1,16 +1,16 @@
+/** Language-neutral company data. Localised strings (hours, address line, tagline…) live in src/i18n/<locale>.ts. */
 export const site = {
   name: 'Lagom Mühendislik',
   url: 'https://lagommuhendislik.com',
-  tagline: 'Grundfos Yetkili Bayii',
-  description:
-    'Lagom Mühendislik, Grundfos yetkili bayii olarak binalar, endüstri ve altyapı için pompa ve su sistemlerinin seçimini, tedarikini ve servisini sağlar.',
   phone: '0212 245 06 74',
+  phoneIntl: '+90 212 245 06 74',
   phoneHref: 'tel:+902122450674',
   whatsapp: '0531 660 74 79',
+  whatsappIntl: '+90 531 660 74 79',
   whatsappHref: 'https://wa.me/905316607479',
   email: 'info@lagommuhendislik.com',
-  address: 'Ömer Avni, Beytül Malcı Sk. 8/A, 34427 Beyoğlu / İstanbul',
-  hours: 'Pazartesi – Cumartesi, 09:00 – 18:00',
+  street: 'Ömer Avni, Beytül Malcı Sk. 8/A',
+  postalCode: '34427',
   geo: { lat: 41.0354888, lng: 28.9900265 },
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=Lagom+M%C3%BChendislik+Beyo%C4%9Flu',
   mapsEmbed:
@@ -21,14 +21,6 @@ export const site = {
     { label: 'X', href: 'https://x.com/Lagommuhendislik' },
   ],
 };
-
-export const nav = [
-  { label: 'Ürünler', href: '/urunler' },
-  { label: 'Uygulama Alanları', href: '/uygulama-alanlari' },
-  { label: 'Hizmetler', href: '/hizmetler' },
-  { label: 'Hakkımızda', href: '/hakkimizda' },
-  { label: 'İletişim', href: '/iletisim' },
-];
 
 /** WhatsApp link with a prefilled message. */
 export const whatsappWith = (text: string) => `${site.whatsappHref}?text=${encodeURIComponent(text)}`;

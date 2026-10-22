@@ -13,6 +13,7 @@ Hedef: sade, anlaşılır, kullanması kolay. Site yalnızca iki şeye odaklanı
 - **Tek vurgu rengi:** sinyal turuncusu, yalnızca birincil aksiyonlarda.
 - **Açık / koyu tema:** sistem tercihini izler; header'daki butonla elle değiştirilebilir, seçim hatırlanır.
 - **Mobil:** altta sabit Ara / WhatsApp / Teklif iste çubuğu.
+- **Dört dil:** Türkçe, İngilizce, Rusça, Özbekçe (Latin). Sağ üstteki TR · EN · RU · UZ butonları bulunulan sayfanın diğer dildeki karşılığına geçer.
 
 ## Geliştirme
 
@@ -37,15 +38,29 @@ Astro 6 (Node ≥ 22.12). Çıktı tamamen statiktir; herhangi bir statik hostin
 
 ```
 src/
-  data/          # tüm içerik burada: site.ts, products.ts, solutions.ts, services.ts
-  components/    # Header, Footer, TitleBlock, ProductGrid, SolutionList, Brands, ContactSheet…
-  layouts/Base.astro
-  pages/         # /, /urunler, /uygulama-alanlari, /hizmetler, /hakkimizda, /grundfos, /iletisim
+  i18n/          # tüm metinler: tr.ts (kaynak), en.ts, ru.ts, uz.ts + yönlendirme (index.ts)
+  data/          # dilden bağımsız veriler: ürün görselleri, markalar, seriler, iletişim bilgileri
+  views/         # sayfa şablonları (her dil için aynı şablon)
+  pages/         # Türkçe rotalar kökte; [lang]/[...path].astro diğer dilleri üretir
+  components/    # Header, Footer, SystemLoop, ProductGrid, TitleBlock…
 public/images/   # eski siteden alınan görseller
 docs/crawl/      # eski sitenin taranmış metinleri (kaynak arşivi)
 ```
 
-Ürün eklemek / değiştirmek için yalnızca `src/data/products.ts` düzenlenir; liste, detay sayfası, footer ve yönlendirmeler otomatik güncellenir.
+### Diller ve adresler
+
+| Dil | Ana sayfa | Ürünler | Örnek ürün |
+| --- | --- | --- | --- |
+| Türkçe | `/` | `/urunler` | `/urunler/sq` |
+| English | `/en` | `/en/products` | `/en/products/sq` |
+| Русский | `/ru` | `/ru/products` | `/ru/products/sq` |
+| O‘zbekcha | `/uz` | `/uz/products` | `/uz/products/sq` |
+
+- Metin değiştirmek için ilgili dilin dosyası düzenlenir (`src/i18n/<dil>.ts`). Dört dosya aynı yapıdadır; `tr.ts` kaynak kabul edilir.
+- Yeni ürün: `src/data/products.ts` içine kayıt + dört dil dosyasında `productData` altına metni.
+- Marka ürün aileleri `src/data/brands.ts` içindeki serilerle **sırayla** eşleşir; aile eklerken dört dilde aynı sıraya eklenmeli.
+- Özbekçede `o‘` / `g‘` için `‘` (U+2018) kullanılır; resmi `ʻ` (U+02BB) IBM Plex fontunda olmadığı için boşluklu görünüyordu.
+- Sayfalarda `hreflang` etiketleri vardır; arama motorları her dili ayrı sayfa olarak tanır.
 
 ## Eski siteden taşınanlar
 
@@ -62,4 +77,6 @@ docs/crawl/      # eski sitenin taranmış metinleri (kaynak arşivi)
 
 - **SQ:** eski sitede "Sistem basıncı: maks. 150 bar" yazıyordu; dalgıç kuyu pompası için hatalı görünüyor, yayına alınmadı.
 - **WhatsApp numarası** (0531 660 74 79) eski sitedeki butondan alındı.
+- **Çeviriler:** İngilizce, Rusça ve Özbekçe metinler ana dili konuşan biri tarafından gözden geçirilmeli; özellikle teknik terimler.
+- **Marka ürün aileleri** (Viessmann, Buderus, Bosch, Alfa Laval, FAF, Rehau) markaların genel bilinen gamından yazıldı; satılan ürünlerle teyit edilmeli.
 - **Teklif formu** sunucu gerektirmez: mesajı kullanıcının e-posta uygulamasında ya da WhatsApp'ta hazır açar. İstenirse Formspree / Netlify Forms ile doğrudan gönderime çevrilebilir.

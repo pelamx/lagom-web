@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import SolutionList from '../components/SolutionList.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { useT } from '../i18n';
+
+const { t } = useT(Astro.url);
+const s = t.solutions;
+---
+
+<Base title={s.metaTitle} description={s.metaDescription}>
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{s.label}</div>
+      <div>
+        <h1>{s.title}</h1>
+        <p class="lead">{s.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom: var(--section)">
+    <div class="container sheet-grid">
+      <div></div>
+      <SolutionList />
+    </div>
+  </section>
+
+  <ContactSheet />
+</Base>

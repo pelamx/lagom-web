@@ -2,22 +2,28 @@
 import { url } from '../lib/url';
 import Icon from './Icon.astro';
 import { solutions } from '../data/solutions';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
 ---
 
 <ol class="rows">
-  {solutions.map((s, i) => (
-    <li>
-      <a href={url(`/uygulama-alanlari/${s.slug}`)}>
-        <span class="num mono">{String(i + 1).padStart(2, '0')}</span>
-        <div class="text">
-          <h3>{s.title}</h3>
-          <p>{s.summary}</p>
-        </div>
-        <img src={url(s.image)} alt="" loading="lazy" />
-        <span class="arrow"><Icon name="arrow" size={20} /></span>
-      </a>
-    </li>
-  ))}
+  {solutions.map((s, i) => {
+    const text = t.solutionData[s.id as keyof typeof t.solutionData];
+    return (
+      <li>
+        <a href={href(locale, 'solutions', s.id)}>
+          <span class="num mono">{String(i + 1).padStart(2, '0')}</span>
+          <div class="text">
+            <h3>{text.title}</h3>
+            <p>{text.summary}</p>
+          </div>
+          <img src={url(s.image)} alt="" loading="lazy" />
+          <span class="arrow"><Icon name="arrow" size={20} /></span>
+        </a>
+      </li>
+    );
+  })}
 </ol>
 
 <style>

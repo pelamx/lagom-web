@@ -10,7 +10,7 @@ const withBase = (path) => `${base.replace(/\/$/, '')}${path}`;
 // Old lagommuhendislik.com URLs → new pages, so existing links and search results keep working.
 const legacy = {
   ...Object.fromEntries(products.map((p) => [p.legacy, `/urunler/${p.slug}`])),
-  ...Object.fromEntries(solutions.map((s) => [s.legacy, `/uygulama-alanlari/${s.slug}`])),
+  ...Object.fromEntries(solutions.map((s) => [s.legacy, `/uygulama-alanlari/${s.id}`])),
   '/hizmet/grundfos-pompa': '/grundfos',
   '/icerik/grundfos-yetkili-bayii': '/grundfos',
   '/icerik/grundfos-servisleri': '/hizmetler',

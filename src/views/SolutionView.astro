@@ -1,0 +1,83 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { solutions, type Solution } from '../data/solutions';
+import { products } from '../data/products';
+import { useT, href } from '../i18n';
+
+interface Props { solution: Solution }
+const { solution } = Astro.props;
+const { locale, t } = useT(Astro.url);
+const textOf = (s: Solution) => t.solutionData[s.id as keyof typeof t.solutionData];
+const text = textOf(solution);
+
+const related = products.filter((p) => solution.products.includes(p.slug));
+const i = solutions.indexOf(solution);
+const next = solutions[(i + 1) % solutions.length];
+---
+
+<Base title={text.title} description={text.summary} image={solution.image}>
+  <section class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label={t.ui.breadcrumb}>
+        <a href={href(locale, 'home')}>{t.ui.home}</a><span>/</span><a href={href(locale, 'solutions')}>{t.nav.solutions}</a><span>/</span><span>{text.title}</span>
+      </nav>
+      <div class="sheet-grid">
+        <div class="sheet-label">{String(i + 1).padStart(2, '0')} / {String(solutions.length).padStart(2, '0')}</div>
+        <div>
+          <h1>{text.title}</h1>
+          <p class="lead">{text.summary}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <figure class="photo"><img src={url(solution.image)} alt="" /></figure>
+  </div>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{t.solution.scope}</div>
+      <div class="cols">
+        <div class="prose">{text.body.map((p) => <p>{p}</p>)}</div>
+        <ul class="dash-list">{text.items.map((item) => <li>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="sheet">
+      <div class="container sheet-grid">
+        <div class="sheet-label">{t.solution.recommended}</div>
+        <div class="sheet-head"><h2>{t.solution.recommendedTitle}</h2></div>
+      </div>
+      <div class="container"><ProductGrid products={related} /></div>
+    </section>
+  )}
+
+  <section class="sheet next">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{t.ui.next}</div>
+      <a href={href(locale, 'solutions', next.id)} class="next-link">{textOf(next).title} <Icon name="arrow" size={28} /></a>
+    </div>
+  </section>
+
+  <ContactSheet />
+</Base>
+
+<style>
+  .photo { margin: 0 0 var(--section); aspect-ratio: 21 / 8; overflow: hidden; background: var(--sunk); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
+  .cols { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 72px); }
+  .prose p { font-size: 1.1rem; color: var(--ink-2); max-width: 58ch; }
+  .next-link { display: inline-flex; align-items: center; gap: 16px; font-size: clamp(1.6rem, 3.4vw, 2.6rem); letter-spacing: -0.025em; }
+  .next-link:hover { color: var(--accent); }
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+    .photo { aspect-ratio: 16 / 9; }
+  }
+</style>

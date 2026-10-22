@@ -1,8 +1,16 @@
 ---
 import { url } from '../lib/url';
-import { nav, site } from '../data/site';
+import { site } from '../data/site';
 import { brands } from '../data/brands';
 import { solutions } from '../data/solutions';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
+const company = [
+  { label: t.nav.services, href: href(locale, 'services') },
+  { label: t.nav.about, href: href(locale, 'about') },
+  { label: t.nav.contact, href: href(locale, 'contact') },
+];
 ---
 
 <footer class="footer">
@@ -10,43 +18,43 @@ import { solutions } from '../data/solutions';
     <div class="cols">
       <div class="brand">
         <img src={url('/images/site/logo-dark.png')} alt={site.name} width="372" height="168" />
-        <p>Grundfos yetkili bayii.<br />Pompa ve hidrofor sistemlerinde seçim, tedarik, devreye alma ve servis.</p>
+        <p>{t.footer.blurb[0]}<br />{t.footer.blurb[1]}</p>
       </div>
 
       <div>
-        <h4>Ürünler</h4>
-        <ul>{brands.map((b) => <li><a href={url(`/urunler#${b.slug}`)}>{b.name}</a></li>)}</ul>
+        <h4>{t.footer.products}</h4>
+        <ul>{brands.map((b) => <li><a href={href(locale, 'products', undefined, `#${b.slug}`)}>{b.name}</a></li>)}</ul>
       </div>
 
       <div>
-        <h4>Uygulama alanları</h4>
+        <h4>{t.footer.solutions}</h4>
         <ul>
-          {solutions.map((s) => <li><a href={url(`/uygulama-alanlari/${s.slug}`)}>{s.title}</a></li>)}
-          <li><a href={url('/grundfos')}>Grundfos yetkili bayii</a></li>
+          {solutions.map((s) => <li><a href={href(locale, 'solutions', s.id)}>{t.solutionData[s.id as keyof typeof t.solutionData].title}</a></li>)}
+          <li><a href={href(locale, 'grundfos')}>{t.footer.grundfos}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4>Firma</h4>
-        <ul>{nav.slice(2).map((item) => <li><a href={url(item.href)}>{item.label}</a></li>)}</ul>
+        <h4>{t.footer.company}</h4>
+        <ul>{company.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
       </div>
     </div>
 
     <!-- title block -->
     <div class="antet">
       <div class="cell wide">
-        <span>Adres</span>
-        <a href={site.mapsHref} target="_blank" rel="noopener">{site.address}</a>
+        <span>{t.footer.address}</span>
+        <a href={site.mapsHref} target="_blank" rel="noopener">{t.site.address}</a>
       </div>
-      <div class="cell"><span>Telefon</span><a href={site.phoneHref}>{site.phone}</a></div>
-      <div class="cell"><span>WhatsApp</span><a href={site.whatsappHref} target="_blank" rel="noopener">{site.whatsapp}</a></div>
-      <div class="cell"><span>E-posta</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
-      <div class="cell"><span>Çalışma saatleri</span>{site.hours}</div>
+      <div class="cell"><span>{t.footer.phone}</span><a href={site.phoneHref}>{t.site.phone}</a></div>
+      <div class="cell"><span>{t.footer.whatsapp}</span><a href={site.whatsappHref} target="_blank" rel="noopener">{t.site.whatsapp}</a></div>
+      <div class="cell"><span>{t.footer.email}</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div class="cell"><span>{t.footer.hours}</span>{t.site.hours}</div>
       <div class="cell">
-        <span>Sosyal</span>
+        <span>{t.footer.social}</span>
         <div class="social">{site.social.map((s) => <a href={s.href} target="_blank" rel="noopener">{s.label}</a>)}</div>
       </div>
-      <div class="cell"><span>Belge</span>© {new Date().getFullYear()} {site.name}</div>
+      <div class="cell"><span>{t.footer.doc}</span>© {new Date().getFullYear()} {site.name}</div>
     </div>
   </div>
 </footer>
@@ -68,7 +76,7 @@ import { solutions } from '../data/solutions';
     background: var(--line);
     border: 1px solid var(--rule);
   }
-  .cell { padding: 12px 16px 14px; background: var(--surface); display: grid; gap: 2px; align-content: start; }
+  .cell { padding: 12px 16px 14px; background: var(--surface); display: grid; gap: 2px; align-content: start; min-width: 0; overflow-wrap: anywhere; }
   .cell.wide { grid-column: span 2; }
   .cell span { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
   .cell a:hover { color: var(--accent); }

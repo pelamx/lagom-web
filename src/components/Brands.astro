@@ -1,10 +1,10 @@
 ---
 import { url } from '../lib/url';
-import { brands } from '../data/services';
+import { logos } from '../data/logos';
 ---
 
 <ul class="brands">
-  {brands.map((b) => (
+  {logos.map((b) => (
     <li><img src={url(b.logo)} alt={b.name} title={b.name} loading="lazy" class:list={{ boxed: b.boxed }} /></li>
   ))}
 </ul>

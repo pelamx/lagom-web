@@ -1,0 +1,175 @@
+---
+import { url } from '../lib/url';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import SolutionList from '../components/SolutionList.astro';
+import Brands from '../components/Brands.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { site } from '../data/site';
+import { products } from '../data/products';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
+const h = t.home;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.name,
+  description: t.meta.description,
+  url: site.url,
+  telephone: '+902122450674',
+  email: site.email,
+  image: `${site.url}/images/site/logo-dark.png`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.street,
+    postalCode: site.postalCode,
+    addressLocality: 'Beyoğlu',
+    addressRegion: 'İstanbul',
+    addressCountry: 'TR',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  openingHours: 'Mo-Sa 09:00-18:00',
+  sameAs: site.social.map((s) => s.href),
+};
+---
+
+<Base>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <p class="mono hero-label">{h.label}</p>
+      <h1>{h.title.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h1>
+
+      <div class="sheet-grid hero-sub">
+        <div></div>
+        <div>
+          <p class="lead">{h.lead}</p>
+          <div class="btn-row">
+            <a href={href(locale, 'contact', undefined, '#teklif')} class="btn btn-accent">{t.ui.quote} <Icon name="arrow" size={16} /></a>
+            <a href={href(locale, 'products')} class="btn">{h.products}</a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img src={url('/images/site/depo.jpg')} alt={h.photoAlt} width="1920" height="760" fetchpriority="high" />
+      </figure>
+      <TitleBlock
+        cells={[
+          { label: h.block.authority, value: h.block.authorityValue, href: href(locale, 'grundfos') },
+          { label: h.block.location, value: t.site.location, href: site.mapsHref },
+          { label: h.block.hours, value: t.site.hoursShort },
+          { label: h.block.phone, value: t.site.phone, href: site.phoneHref },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{h.lagomLabel} <span class="muted">{h.lagomLang}</span></div>
+      <p class="manifesto">
+        {h.manifesto}
+        <span class="muted">{h.manifestoMuted}</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>01</b> {h.productsLabel}</div>
+      <div>
+        <div class="sheet-head">
+          <h2>{h.productsTitle}</h2>
+          <a href={href(locale, 'products')} class="link">{t.ui.allProducts} <Icon name="arrow" size={16} /></a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <ProductGrid products={products} />
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>02</b> {h.solutionsLabel}</div>
+      <div>
+        <div class="sheet-head">
+          <div>
+            <h2>{h.solutionsTitle}</h2>
+            <p>{h.solutionsLead}</p>
+          </div>
+        </div>
+        <SolutionList />
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>03</b> {h.servicesLabel}</div>
+      <div>
+        <div class="sheet-head">
+          <h2>{h.servicesTitle}</h2>
+          <a href={href(locale, 'services')} class="link">{h.servicesLink} <Icon name="arrow" size={16} /></a>
+        </div>
+        <ol class="steps">
+          {t.services_list.map((s, i) => (
+            <li>
+              <span class="mono muted">{i + 1} / {t.services_list.length}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>04</b> {h.brandsLabel}</div>
+      <div>
+        <div class="sheet-head"><h2>{h.brandsTitle}</h2></div>
+        <Brands />
+      </div>
+    </div>
+  </section>
+
+  <ContactSheet label={`05 ${h.contactLabel}`} />
+</Base>
+
+<style>
+  .hero { padding: clamp(40px, 6vw, 88px) 0 var(--section); }
+  .hero-label { color: var(--muted); margin-bottom: 28px; }
+  .hero h1 { font-size: clamp(2.3rem, 6.3vw, 6.2rem); overflow-wrap: break-word; }
+  .hero-sub { margin: clamp(28px, 4vw, 48px) 0 clamp(40px, 5vw, 64px); }
+  .hero-sub .lead { margin-bottom: 28px; }
+  .hero-photo { margin: 0; aspect-ratio: 21 / 8; overflow: hidden; background: var(--sunk); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
+
+  .manifesto { font-size: clamp(1.45rem, 2.7vw, 2.25rem); line-height: 1.28; letter-spacing: -0.02em; max-width: 30ch; margin: 0; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); }
+  .steps li { padding: 18px 20px 24px 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .steps li + li { padding-left: 20px; border-left: 1px solid var(--line); }
+  .steps p { color: var(--muted); font-size: 0.95rem; }
+
+  @media (max-width: 900px) {
+    .hero-photo { aspect-ratio: 16 / 9; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps li:nth-child(3) { padding-left: 0; border-left: 0; }
+    .steps li:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+    .steps li,
+    .steps li + li { padding: 18px 0; border-left: 0; }
+    .steps li + li { border-top: 1px solid var(--line); }
+  }
+</style>

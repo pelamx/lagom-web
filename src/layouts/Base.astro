@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
 import { site } from '../data/site';
+import { useT, alternates, languages, defaultLocale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -12,22 +13,26 @@ interface Props {
   image?: string;
 }
 
-const { title, description = site.description, image = '/images/site/depo.jpg' } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
+const { locale, t } = useT(Astro.url);
+const { title, description = t.meta.description, image = '/images/site/depo.jpg' } = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${t.meta.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url(image), Astro.site).href;
+const alts = alternates(Astro.url).map((a) => ({ ...a, abs: new URL(a.href, Astro.site).href }));
 // A copy served under a sub-path (GitHub Pages preview) must not compete with the real domain in search.
 const isPreview = import.meta.env.BASE_URL !== '/';
 ---
 
 <!doctype html>
-<html lang="tr">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alts.map((a) => <link rel="alternate" hreflang={a.locale} href={a.abs} />)}
+    <link rel="alternate" hreflang="x-default" href={alts.find((a) => a.locale === defaultLocale)!.abs} />
     {isPreview && <meta name="robots" content="noindex" />}
     <link rel="icon" type="image/png" href={url('/favicon.png')} />
     <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)" />
@@ -42,7 +47,7 @@ const isPreview = import.meta.env.BASE_URL !== '/';
     </script>
 
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale" content={languages[locale].og} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -53,7 +58,7 @@ const isPreview = import.meta.env.BASE_URL !== '/';
     <slot name="head" />
   </head>
   <body>
-    <a href="#main" class="skip-link">İçeriğe geç</a>
+    <a href="#main" class="skip-link">{t.ui.skip}</a>
     <Header />
     <main id="main">
       <slot />

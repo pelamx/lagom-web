@@ -1,0 +1,198 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SystemLoop from '../components/SystemLoop.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { brands, stageKeys, type Brand } from '../data/brands';
+import { products } from '../data/products';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
+const p = t.products;
+
+const textOf = (b: Brand) => t.brandData[b.slug as keyof typeof t.brandData];
+const stageOf = (b: Brand) => {
+  const i = stageKeys.indexOf(b.stage);
+  return { num: String(i + 1).padStart(2, '0'), name: t.stages[b.stage] };
+};
+const quoteHref = (product: string) => href(locale, 'contact', undefined, `?urun=${encodeURIComponent(product)}#teklif`);
+---
+
+<Base title={p.metaTitle} description={p.metaDescription}>
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">{p.label} <span class="muted">{p.count(brands.length)}</span></div>
+      <div>
+        <h1>{p.title}</h1>
+        <p class="lead">{p.lead}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="schematic">
+    <div class="container">
+      <SystemLoop />
+      <p class="mono muted hint">{p.hint}</p>
+    </div>
+  </section>
+
+  <nav class="brand-bar" aria-label={p.brandsNav}>
+    <div class="container">
+      <ul>
+        {brands.map((b) => <li><a href={`#${b.slug}`} data-target={b.slug}>{b.name}</a></li>)}
+      </ul>
+    </div>
+  </nav>
+
+  {brands.map((b, i) => {
+    const stage = stageOf(b);
+    const text = textOf(b);
+    return (
+      <section class="sheet brand" id={b.slug}>
+        <div class="container sheet-grid">
+          <div class="sheet-label rail">
+            <span><b>M-{String(i + 1).padStart(2, '0')}</b></span>
+            <span>{text.origin}</span>
+            <span class="stage"><span class="dot" />{stage.num} {stage.name}</span>
+          </div>
+          <div>
+            <div class="brand-head">
+              <h2 class="wordmark">{b.name}</h2>
+              <p class="lead">{text.summary}</p>
+            </div>
+
+            <ol class="families">
+              {b.families.map((f, j) => {
+                const name = text.families[j];
+                return (
+                  <li>
+                    <a href={f.product ? href(locale, 'products', f.product) : quoteHref(`${b.name} – ${name}`)}>
+                      <span class="mono idx">{String(j + 1).padStart(2, '0')}</span>
+                      <span class="fam">{name}</span>
+                      <span class:list={['mono series', { empty: !f.series }]}>{f.series ?? '—'}</span>
+                      <span class="act">
+                        {f.product ? p.productPage : t.ui.quote} <Icon name="arrow" size={15} />
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ol>
+
+            {b.slug === 'grundfos' && (
+              <div class="featured">
+                <div class="sheet-head">
+                  <h3>{p.featured}</h3>
+                  <a href={href(locale, 'grundfos')} class="link">{p.dealership} <Icon name="arrow" size={16} /></a>
+                </div>
+                <ProductGrid products={products} />
+              </div>
+            )}
+
+            <a href={quoteHref(b.name)} class="btn brand-cta">
+              {p.brandQuote(b.name)} <Icon name="arrow" size={16} />
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <ContactSheet title={p.contactTitle} />
+</Base>
+
+<script>
+  // Highlight the brand currently in view in the sticky bar.
+  const links = new Map(
+    [...document.querySelectorAll<HTMLAnchorElement>('.brand-bar a')].map((a) => [a.dataset.target, a]),
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        links.forEach((a) => a.removeAttribute('aria-current'));
+        const active = links.get(e.target.id);
+        active?.setAttribute('aria-current', 'true');
+        active?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  document.querySelectorAll('section.brand').forEach((s) => observer.observe(s));
+</script>
+
+<style>
+  .schematic { padding-bottom: clamp(48px, 6vw, 80px); }
+  .hint { margin-top: 14px; font-size: 0.76rem; }
+
+  .brand-bar {
+    position: sticky;
+    top: 68px;
+    z-index: 30;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand-bar ul { display: flex; gap: 28px; overflow-x: auto; scrollbar-width: none; }
+  .brand-bar ul::-webkit-scrollbar { display: none; }
+  .brand-bar a {
+    display: block;
+    padding: 14px 0 12px;
+    font-size: 0.93rem;
+    color: var(--muted);
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s;
+  }
+  .brand-bar a:hover { color: var(--ink); }
+  .brand-bar a[aria-current] { color: var(--ink); border-bottom-color: var(--accent); }
+
+  .brand { scroll-margin-top: 120px; }
+  .rail { display: grid; gap: 6px; align-content: start; }
+  .rail .stage { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); }
+  .dot { width: 7px; height: 7px; background: var(--accent); display: inline-block; flex-shrink: 0; }
+
+  .brand-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px 48px; align-items: end; margin-bottom: 36px; }
+  .wordmark { font-size: clamp(2.6rem, 6vw, 5rem); letter-spacing: -0.045em; line-height: 0.95; }
+  .brand-head .lead { font-size: 1.05rem; }
+
+  .families { border-top: 1px solid var(--rule); }
+  .families li { border-bottom: 1px solid var(--line); }
+  .families a {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1.3fr) minmax(0, 1fr) 150px;
+    gap: 16px;
+    align-items: baseline;
+    padding: 15px 8px 15px 0;
+    transition: background 0.12s, padding 0.15s;
+  }
+  .families a:hover { background: var(--surface); padding-left: 8px; }
+  .idx { color: var(--muted); font-size: 0.74rem; }
+  .fam { font-weight: 500; }
+  .series { color: var(--ink-2); font-size: 0.84rem; }
+  .act { display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px; font-size: 0.88rem; color: var(--muted); text-align: right; transition: color 0.12s; }
+  .families a:hover .act,
+  .families a:hover .fam { color: var(--accent); }
+
+  .featured { margin-top: 56px; }
+  .featured h3 { font-size: 1.3rem; }
+  .featured .sheet-head { margin-bottom: 24px; }
+  .brand-cta { margin-top: 32px; white-space: normal; text-align: left; height: auto; min-height: 50px; padding-block: 10px; }
+
+  @media (max-width: 1060px) {
+    .brand-bar { top: 60px; }
+  }
+  @media (max-width: 920px) {
+    .brand-head { grid-template-columns: 1fr; }
+    .rail { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  }
+  @media (max-width: 640px) {
+    .families a { grid-template-columns: 28px minmax(0, 1fr) 24px; row-gap: 2px; }
+    .series { grid-column: 2; grid-row: 2; }
+    .series.empty { display: none; }
+    .act { grid-column: 3; grid-row: 1 / span 2; align-self: center; font-size: 0; gap: 0; }
+  }
+</style>

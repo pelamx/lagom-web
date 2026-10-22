@@ -1,12 +1,14 @@
 ---
-import { url } from '../lib/url';
 import { site } from '../data/site';
+import { useT, href } from '../i18n';
+
+const { locale, t } = useT(Astro.url);
 ---
 
-<div class="mobile-bar" role="navigation" aria-label="Hızlı iletişim">
-  <a href={site.phoneHref}>Ara</a>
-  <a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp</a>
-  <a href={url('/iletisim#teklif')} class="accent">Teklif iste</a>
+<div class="mobile-bar" role="navigation" aria-label={t.ui.quickContact}>
+  <a href={site.phoneHref}>{t.ui.call}</a>
+  <a href={site.whatsappHref} target="_blank" rel="noopener">{t.ui.whatsapp}</a>
+  <a href={href(locale, 'contact', undefined, '#teklif')} class="accent">{t.ui.quote}</a>
 </div>
 
 <style>
@@ -28,8 +30,11 @@ import { site } from '../data/site';
       display: grid;
       place-items: center;
       height: 56px;
+      padding: 0 6px;
       font-weight: 500;
       font-size: 0.95rem;
+      text-align: center;
+      line-height: 1.15;
       border-right: 1px solid var(--line);
     }
     a.accent { background: var(--accent); color: var(--accent-ink); border-right: 0; }

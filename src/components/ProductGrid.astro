@@ -1,30 +1,29 @@
 ---
 import { url } from '../lib/url';
-import type { Product } from '../data/products';
-import { products as all } from '../data/products';
+import { productCode, type Product } from '../data/products';
+import { useT, href } from '../i18n';
 
 interface Props { products: Product[] }
 const { products } = Astro.props;
-
-// Catalogue number stays stable regardless of which subset is shown.
-const code = (p: Product) => `P-${String(all.indexOf(p) + 1).padStart(2, '0')}`;
+const { locale, t } = useT(Astro.url);
+const text = (p: Product) => t.productData[p.slug as keyof typeof t.productData];
 ---
 
 <ul class="catalog">
   {products.map((p) => (
     <li>
-      <a href={url(`/urunler/${p.slug}`)}>
+      <a href={href(locale, 'products', p.slug)}>
         <div class="meta mono">
-          <span>{code(p)}</span>
-          <span>{p.category}</span>
+          <span>{productCode(p)}</span>
+          <span>{text(p).category}</span>
         </div>
         <div class="media">
-          <img src={url(p.image)} alt={p.name} width="600" height="600" loading="lazy" />
+          <img src={url(p.image)} alt={text(p).name} width="600" height="600" loading="lazy" />
         </div>
-        <h3>{p.name}</h3>
-        {p.specs.length > 0 && (
+        <h3>{text(p).name}</h3>
+        {text(p).specs.length > 0 && (
           <dl class="mono">
-            {p.specs.slice(0, 2).map((s) => (
+            {text(p).specs.slice(0, 2).map((s) => (
               <div><dt>{s.label}</dt><dd>{s.value}</dd></div>
             ))}
           </dl>
@@ -41,7 +40,7 @@ const code = (p: Product) => `P-${String(all.indexOf(p) + 1).padStart(2, '0')}`;
     border-top: 1px solid var(--rule);
     border-left: 1px solid var(--line);
   }
-  li { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  li { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
   a { display: flex; flex-direction: column; height: 100%; padding: 16px 18px 20px; transition: background 0.12s; }
   a:hover { background: var(--surface); }
   .meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 0.72rem; }
