@@ -1,0 +1,158 @@
+---
+/**
+ * The brand portfolio drawn as a hydronic circuit: each stage is a link in the loop,
+ * with its P&ID-style symbol and the brands that supply it.
+ */
+import { stages, brandsIn, type StageKey } from '../data/brands';
+
+const symbols: Record<StageKey, string> = {
+  // boiler with flame
+  uretim: '<rect x="14" y="6" width="36" height="52"/><path d="M14 18h36"/><path d="M32 50c-7-4-7-11-1-17 0 5 3 6 4 3 4 5 4 11-3 14z"/>',
+  // plate heat exchanger
+  transfer: '<rect x="10" y="10" width="44" height="44"/><path d="M19 10v44M26 10v44M33 10v44M40 10v44M47 10v44"/><path d="M4 20h6M54 44h6"/>',
+  // centrifugal pump
+  pompa: '<circle cx="32" cy="34" r="20"/><path d="M32 14h22"/><path d="M25 24l16 10-16 10z"/>',
+  // gate / butterfly valve with handwheel
+  kontrol: '<path d="M8 20l24 14L8 48zM56 20L32 34l24 14z"/><path d="M32 34V12M22 12h20"/>',
+  // underfloor heating coil
+  dagitim: '<path d="M8 10h48v11H8v11h48v11H8v11h48"/>',
+};
+---
+
+<div class="loop">
+  <ol class="stages">
+    {stages.map((s, i) => (
+      <li class="stage">
+        <div class="head">
+          <span class="mono num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="mono name">{s.name}</span>
+        </div>
+        <div class="node">
+          <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" set:html={symbols[s.key]} />
+        </div>
+        <ul class="brands">
+          {brandsIn(s.key).map((b) => (
+            <li><a href={`#${b.slug}`}>{b.name}</a></li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ol>
+  <div class="return-pipe" aria-hidden="true"><span class="mono">← Dönüş hattı</span></div>
+</div>
+
+<style>
+  .loop { position: relative; border: 1px solid var(--rule); background: var(--surface); padding: 28px 28px 64px; }
+
+  .stages { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(5, 1fr); }
+  .stage { position: relative; padding: 0 12px 28px; min-width: 0; }
+  .head { display: flex; gap: 10px; align-items: baseline; height: 20px; line-height: 20px; margin-bottom: 18px; font-size: 0.74rem; white-space: nowrap; }
+  .num { color: var(--accent); }
+  .name { color: var(--muted); }
+
+  /* the node sits on the supply pipe */
+  .node {
+    position: relative;
+    z-index: 1;
+    width: 88px;
+    height: 88px;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .stage:hover .node { color: var(--accent); border-color: var(--accent); }
+
+  /* supply pipe: from this node to the next one (20px head + 18px gap + half node) */
+  .stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 100px;
+    right: -12px;
+    top: 81px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 16px);
+    background-size: 16px 2px;
+    animation: flow 0.9s linear infinite;
+  }
+  /* stubs joining the first and last node to the return pipe */
+  .stage:first-child::before,
+  .stage:last-child::after {
+    content: '';
+    position: absolute;
+    top: 81px;
+    border-top: 1.5px dashed var(--muted);
+  }
+  .stage:first-child::before { left: -14px; width: 26px; }
+  .stage:last-child::after { left: 100px; right: -14px; }
+
+  .brands { margin-top: 18px; display: grid; gap: 4px; }
+  .brands a {
+    display: inline-block;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid transparent;
+    transition: color 0.12s, border-color 0.12s;
+  }
+  .brands a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* return pipe: down the right edge, back along the bottom, up the left edge */
+  .return-pipe {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 109px;
+    bottom: 30px;
+    border: 1.5px dashed var(--muted);
+    border-top: 0;
+    pointer-events: none;
+  }
+  .return-pipe span {
+    position: absolute;
+    left: 50%;
+    bottom: -0.7em;
+    transform: translateX(-50%);
+    background: var(--surface);
+    padding: 0 12px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  @keyframes flow { to { background-position: 16px 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .stage::after { animation: none !important; }
+  }
+
+
+  /* vertical circuit on narrow screens: return pipe runs up the right edge */
+  @media (max-width: 900px) {
+    .loop { padding: 24px 44px 24px 20px; }
+    .stages { grid-template-columns: 1fr; }
+    .stage { display: grid; grid-template-columns: 72px 1fr; grid-template-rows: auto 1fr; column-gap: 18px; padding: 0 0 28px; }
+    .stage:last-child { padding-bottom: 0; }
+    .head { grid-column: 2; margin-bottom: 6px; }
+    .node { grid-row: 1 / span 2; grid-column: 1; width: 72px; height: 72px; }
+    .node svg { width: 52px; height: 52px; }
+    .brands { grid-column: 2; margin-top: 0; }
+    .stage:not(:last-child)::after {
+      left: 35px;
+      right: auto;
+      top: 72px;
+      bottom: 0;
+      width: 2px;
+      height: auto;
+      background: repeating-linear-gradient(180deg, var(--accent) 0 10px, transparent 10px 16px);
+      background-size: 2px 16px;
+      animation-name: flow-down;
+    }
+    .stage:first-child::before,
+    .stage:last-child::after { display: none; }
+    .return-pipe { left: auto; right: 14px; top: 24px; bottom: 24px; width: 1px; border: 0; border-right: 1.5px dashed var(--muted); }
+    .return-pipe span { left: auto; right: 0; top: 50%; bottom: auto; transform: translate(50%, -50%) rotate(90deg); padding: 0 8px; }
+  }
+  @keyframes flow-down { to { background-position: 0 16px; } }
+</style>
