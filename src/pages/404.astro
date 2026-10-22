@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Base title="Sayfa bulunamadı">
+  <section class="page-head" style="padding-bottom: var(--section)">
+    <div class="container sheet-grid">
+      <div class="sheet-label">404</div>
+      <div>
+        <h1>Bu sayfa yerinde yok.</h1>
+        <p class="lead">Adres değişmiş ya da sayfa kaldırılmış olabilir.</p>
+        <div class="btn-row" style="margin-top: 32px">
+          <a href="/" class="btn">Ana sayfa</a>
+          <a href="/urunler" class="btn">Ürünler <Icon name="arrow" size={16} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

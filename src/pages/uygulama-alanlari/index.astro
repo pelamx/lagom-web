@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import SolutionList from '../../components/SolutionList.astro';
+import ContactSheet from '../../components/ContactSheet.astro';
+---
+
+<Base title="Uygulama Alanları" description="Bireysel ve ticari binalar, endüstriyel tesisler, kentsel atık su ve su temini için Grundfos pompa çözümleri.">
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">Uygulama alanları</div>
+      <div>
+        <h1>Her ölçekte doğru sistem</h1>
+        <p class="lead">Müstakil bir evden şehir altyapısına kadar, uygulamanın gerektirdiği ürünü seçer ve kurarız.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom: var(--section)">
+    <div class="container sheet-grid">
+      <div></div>
+      <SolutionList />
+    </div>
+  </section>
+
+  <ContactSheet />
+</Base>

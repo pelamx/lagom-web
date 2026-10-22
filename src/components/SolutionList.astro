@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+import { solutions } from '../data/solutions';
+---
+
+<ol class="rows">
+  {solutions.map((s, i) => (
+    <li>
+      <a href={`/uygulama-alanlari/${s.slug}`}>
+        <span class="num mono">{String(i + 1).padStart(2, '0')}</span>
+        <div class="text">
+          <h3>{s.title}</h3>
+          <p>{s.summary}</p>
+        </div>
+        <img src={s.image} alt="" loading="lazy" />
+        <span class="arrow"><Icon name="arrow" size={20} /></span>
+      </a>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .rows { border-top: 1px solid var(--rule); }
+  li { border-bottom: 1px solid var(--line); }
+  a {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 168px 32px;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .num { color: var(--muted); align-self: start; padding-top: 0.4em; }
+  h3 { font-size: clamp(1.3rem, 2.2vw, 1.75rem); letter-spacing: -0.02em; transition: color 0.12s; }
+  p { color: var(--muted); margin-top: 6px; max-width: 56ch; }
+  img { width: 168px; height: 96px; object-fit: cover; filter: var(--photo-filter) grayscale(0.6); transition: filter 0.2s; }
+  .arrow { color: var(--muted); transition: transform 0.15s, color 0.12s; }
+  a:hover h3,
+  a:hover .arrow { color: var(--accent); }
+  a:hover .arrow { transform: translateX(4px); }
+  a:hover img { filter: var(--photo-filter); }
+
+  @media (max-width: 720px) {
+    a { grid-template-columns: 32px minmax(0, 1fr) 24px; gap: 14px; }
+    img { display: none; }
+  }
+</style>

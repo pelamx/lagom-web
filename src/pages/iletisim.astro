@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { products } from '../data/products';
+---
+
+<Base title="İletişim ve Teklif" description="Lagom Mühendislik iletişim bilgileri ve teklif formu. Beyoğlu, İstanbul. 0212 245 06 74.">
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">İletişim</div>
+      <div>
+        <h1>Teklif ve iletişim</h1>
+        <p class="lead">Formu doldurun, WhatsApp’tan yazın ya da doğrudan arayın.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" id="teklif">
+    <div class="container sheet-grid">
+      <div class="sheet-label">Teklif formu</div>
+      <div class="layout">
+        <form class="form" id="quote-form" novalidate>
+          <div class="field">
+            <label for="f-name">Ad soyad / firma</label>
+            <input id="f-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-phone">Telefon</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="f-email">E-posta</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" />
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-topic">Konu</label>
+              <select id="f-topic" name="topic">
+                <option>Ürün teklifi</option>
+                <option>Servis / bakım</option>
+                <option>Proje danışmanlığı</option>
+                <option>Diğer</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-product">Ürün (isteğe bağlı)</label>
+              <input id="f-product" name="product" list="product-list" />
+              <datalist id="product-list">{products.map((p) => <option value={p.name} />)}</datalist>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg">Mesaj</label>
+            <textarea id="f-msg" name="message" placeholder="Uygulama, adet, debi / basma yüksekliği gibi bildiğiniz bilgiler…"></textarea>
+          </div>
+          <p class="form-error mono" role="alert" hidden>Lütfen ad ve telefon alanlarını doldurun.</p>
+          <div class="btn-row">
+            <button type="submit" class="btn btn-accent" data-via="mail">E-posta ile gönder</button>
+            <button type="submit" class="btn" data-via="whatsapp">WhatsApp ile gönder</button>
+          </div>
+          <p class="mono muted note">Gönder dediğinizde mesajınız e-posta uygulamanızda ya da WhatsApp’ta hazır olarak açılır.</p>
+        </form>
+
+        <dl class="kv info">
+          <div><dt>Telefon</dt><dd><a href={site.phoneHref}>{site.phone}</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href={site.whatsappHref} target="_blank" rel="noopener">{site.whatsapp}</a></dd></div>
+          <div><dt>E-posta</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+          <div><dt>Çalışma saatleri</dt><dd>Pzt – Cmt 09:00 – 18:00</dd></div>
+          <div><dt>Adres</dt><dd>Beytül Malcı Sk. 8/A<br />Ömer Avni, 34427<br />Beyoğlu / İstanbul</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">Konum</div>
+      <div>
+        <div class="map">
+          <iframe
+            src={site.mapsEmbed}
+            title="Lagom Mühendislik konumu"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+        <a href={site.mapsHref} target="_blank" rel="noopener" class="link map-link">Google Haritalar’da aç</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { site } from '../data/site';
+
+  const form = document.querySelector<HTMLFormElement>('#quote-form')!;
+  const error = form.querySelector<HTMLElement>('.form-error')!;
+  const product = new URLSearchParams(location.search).get('urun');
+  if (product) (form.elements.namedItem('product') as HTMLInputElement).value = product;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const get = (k: string) => String(data.get(k) ?? '').trim();
+
+    if (!get('name') || !get('phone')) {
+      error.hidden = false;
+      return;
+    }
+    error.hidden = true;
+
+    const header = [
+      `Ad / firma: ${get('name')}`,
+      `Telefon: ${get('phone')}`,
+      get('email') && `E-posta: ${get('email')}`,
+      `Konu: ${get('topic')}`,
+      get('product') && `Ürün: ${get('product')}`,
+    ].filter(Boolean);
+    const body = [header.join('\n'), get('message')].filter(Boolean).join('\n\n');
+    const subject = `${get('topic')}${get('product') ? ` – ${get('product')}` : ''}`;
+
+    const via = (e.submitter as HTMLButtonElement | null)?.dataset.via;
+    if (via === 'whatsapp') {
+      window.open(`${site.whatsappHref}?text=${encodeURIComponent(body)}`, '_blank', 'noopener');
+    } else {
+      location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+  });
+</script>
+
+<style>
+  .layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .form { display: grid; gap: 18px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-error { color: var(--accent); margin: 0; }
+  .note { margin: 0; }
+  .info dd a:hover { color: var(--accent); }
+  .map { border: 1px solid var(--rule); aspect-ratio: 21 / 9; background: var(--sunk); }
+  .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+  :global(:root[data-theme='dark']) .map iframe { filter: invert(0.9) hue-rotate(180deg) saturate(0.6); }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .map iframe { filter: invert(0.9) hue-rotate(180deg) saturate(0.6); }
+  }
+  .map-link { margin-top: 16px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .map { aspect-ratio: 4 / 3; }
+  }
+  @media (max-width: 520px) {
+    .two { grid-template-columns: 1fr; }
+  }
+</style>

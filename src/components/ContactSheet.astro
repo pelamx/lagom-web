@@ -1,0 +1,48 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props {
+  label?: string;
+  title?: string;
+}
+const { label = 'İletişim', title = 'Projenizi anlatın, uygun sistemi ve fiyatı biz çıkaralım.' } = Astro.props;
+---
+
+<section class="sheet">
+  <div class="container sheet-grid">
+    <div class="sheet-label">{label}</div>
+    <div class="contact">
+      <h2>{title}</h2>
+      <a href={site.phoneHref} class="big-phone">{site.phone}</a>
+      <div class="row">
+        <div class="btn-row">
+          <a href="/iletisim#teklif" class="btn btn-accent">Teklif formu <Icon name="arrow" size={16} /></a>
+          <a href={site.whatsappHref} target="_blank" rel="noopener" class="btn">WhatsApp’tan yazın</a>
+        </div>
+        <p class="mono muted">{site.email}<br />{site.hours}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  h2 { max-width: 22ch; }
+  .big-phone {
+    display: inline-block;
+    margin: 28px 0 32px;
+    font-size: clamp(2.4rem, 7vw, 5.4rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+  }
+  .big-phone:hover { color: var(--accent); }
+  .row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; }
+  .row p { text-align: right; }
+  @media (max-width: 600px) {
+    .row p { text-align: left; }
+  }
+</style>

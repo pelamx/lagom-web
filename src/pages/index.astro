@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import SolutionList from '../components/SolutionList.astro';
+import Brands from '../components/Brands.astro';
+import ContactSheet from '../components/ContactSheet.astro';
+import { site } from '../data/site';
+import { products } from '../data/products';
+import { services } from '../data/services';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  telephone: '+902122450674',
+  email: site.email,
+  image: `${site.url}/images/site/logo-dark.png`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Ömer Avni, Beytül Malcı Sk. 8/A',
+    postalCode: '34427',
+    addressLocality: 'Beyoğlu',
+    addressRegion: 'İstanbul',
+    addressCountry: 'TR',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  openingHours: 'Mo-Sa 09:00-18:00',
+  sameAs: site.social.map((s) => s.href),
+};
+---
+
+<Base>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <p class="mono hero-label">Grundfos Yetkili Bayii — Beyoğlu, İstanbul</p>
+      <h1>Doğru pompa.<br />Ne eksik, ne fazla.</h1>
+
+      <div class="sheet-grid hero-sub">
+        <div></div>
+        <div>
+          <p class="lead">
+            Bina, endüstri ve altyapı projelerinde pompa ve hidrofor sistemlerini seçiyor, tedarik ediyor, devreye alıyor ve servisini veriyoruz.
+          </p>
+          <div class="btn-row">
+            <a href="/iletisim#teklif" class="btn btn-accent">Teklif iste <Icon name="arrow" size={16} /></a>
+            <a href="/urunler" class="btn">Ürünler</a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img src="/images/site/depo.jpg" alt="Raflarda Grundfos pompa kutuları" width="1920" height="760" fetchpriority="high" />
+      </figure>
+      <TitleBlock
+        cells={[
+          { label: 'Yetki', value: 'Grundfos yetkili bayii', href: '/grundfos' },
+          { label: 'Konum', value: 'Beyoğlu, İstanbul', href: site.mapsHref },
+          { label: 'Çalışma saatleri', value: 'Pzt – Cmt, 09:00 – 18:00' },
+          { label: 'Telefon', value: site.phone, href: site.phoneHref },
+        ]}
+      />
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label">Lagom <span class="muted">(İsveççe)</span></div>
+      <p class="manifesto">
+        Lagom, “ne eksik, ne fazla” demek. Gereğinden büyük seçilen pompa boşa enerji harcar, küçük seçilen pompa erken yorulur.
+        <span class="muted">İşimiz, binanıza ya da tesisinize tam uyan sistemi bulmak ve yıllarca öyle çalışmasını sağlamak.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>01</b> Ürünler</div>
+      <div>
+        <div class="sheet-head">
+          <h2>Grundfos ürünleri</h2>
+          <a href="/urunler" class="link">Tüm ürünler <Icon name="arrow" size={16} /></a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <ProductGrid products={products} />
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>02</b> Uygulama alanları</div>
+      <div>
+        <div class="sheet-head">
+          <div>
+            <h2>Nerede kullanılır?</h2>
+            <p>Müstakil evden şehir altyapısına kadar, her ölçekte su ve ısı transferi.</p>
+          </div>
+        </div>
+        <SolutionList />
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>03</b> Hizmetler</div>
+      <div>
+        <div class="sheet-head">
+          <h2>Seçimden bakıma kadar.</h2>
+          <a href="/hizmetler" class="link">Hizmetler <Icon name="arrow" size={16} /></a>
+        </div>
+        <ol class="steps">
+          {services.map((s, i) => (
+            <li>
+              <span class="mono muted">{i + 1} / {services.length}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet">
+    <div class="container sheet-grid">
+      <div class="sheet-label"><b>04</b> Markalar</div>
+      <div>
+        <div class="sheet-head"><h2>Çalıştığımız markalar</h2></div>
+        <Brands />
+      </div>
+    </div>
+  </section>
+
+  <ContactSheet label="05 İletişim" />
+</Base>
+
+<style>
+  .hero { padding: clamp(40px, 6vw, 88px) 0 var(--section); }
+  .hero-label { color: var(--muted); margin-bottom: 28px; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 7.2rem); }
+  .hero-sub { margin: clamp(28px, 4vw, 48px) 0 clamp(40px, 5vw, 64px); }
+  .hero-sub .lead { margin-bottom: 28px; }
+  .hero-photo { margin: 0; aspect-ratio: 21 / 8; overflow: hidden; background: var(--sunk); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; filter: var(--photo-filter); }
+
+  .manifesto { font-size: clamp(1.45rem, 2.7vw, 2.25rem); line-height: 1.28; letter-spacing: -0.02em; max-width: 30ch; margin: 0; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); }
+  .steps li { padding: 18px 20px 24px 0; display: grid; gap: 10px; align-content: start; }
+  .steps li + li { padding-left: 20px; border-left: 1px solid var(--line); }
+  .steps p { color: var(--muted); font-size: 0.95rem; }
+
+  @media (max-width: 900px) {
+    .hero-photo { aspect-ratio: 16 / 9; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .steps li:nth-child(3) { padding-left: 0; border-left: 0; }
+    .steps li:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+    .steps li,
+    .steps li + li { padding: 18px 0; border-left: 0; }
+    .steps li + li { border-top: 1px solid var(--line); }
+  }
+</style>

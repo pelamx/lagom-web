@@ -1,0 +1,2456 @@
+[
+ {
+  "url": "https://lagommuhendislik.com/",
+  "slug": "index",
+  "title": "Lagom Muhendislik - Grundfos Ticari Bina Bayi",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/slider/AdsYz_tasarYm_66.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/slider/AdsYz_tasarYm_65.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-7.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-8.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/bireysel2.jpg",
+    "alt": "Bireysel Binalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/kurumsal2.jpg",
+    "alt": "Ticari Binalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/endustriyel2.jpg",
+    "alt": "Endüstriyel Proses ve Tesisler"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/kentsel-atik-su-64726-03440.jpg.jpeg",
+    "alt": "Kentsel Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/su-temini-64756-03354.jpg.jpeg",
+    "alt": "Su Temini"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/images_1.jpeg",
+    "alt": "Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/nopath-kopya-2.png_1.webp",
+    "alt": "CIM/CIU - Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/s-1.jpeg.webp",
+    "alt": "S Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/hydro-multi-e.jpeg_1.webp",
+    "alt": "Hydro Multi-E"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/alpha-2.jpeg.webp",
+    "alt": "Grundfos Alpha2"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cr-cri-crn-555x555-1.jpeg.webp",
+    "alt": "CR, CRI, CRN Yüksek Basınç pompalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/sq.png.webp",
+    "alt": "SQ"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/bmet-sistemi-555x555.jpeg.webp",
+    "alt": "BMET Sistemi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cmv-paket-hidrofor.jpeg.webp",
+    "alt": "CMV Paket Hidrofor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak8.png",
+    "alt": "nema"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak2.png",
+    "alt": "miscea"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak10.png",
+    "alt": "limodor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak6.png",
+    "alt": "kodsan"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak12.png",
+    "alt": "honeywell"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak1.png",
+    "alt": "grundfos"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak14.png",
+    "alt": "ao smith"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak13.png",
+    "alt": "alfa laval"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak9.png",
+    "alt": "fullblaze"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak11.png",
+    "alt": "frankische"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak5.png",
+    "alt": "danfoss"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak3.png",
+    "alt": "buderus"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak4.png",
+    "alt": "bosch"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak-baymak.png",
+    "alt": "baymak"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak-ayvaz.png",
+    "alt": "ayvaz"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak7.png",
+    "alt": "airflow"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/lagomlogosiyah_2.png",
+    "alt": "Biz Kimiz"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-4.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": "Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": "Domestik Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": "Ticari Binalar İçin Su Pompası"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": "Lagom Felsefesi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan23/callback.jpg",
+    "alt": "Teklif Formu"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/hakkımızda",
+  "slug": "icerik__hakkımızda",
+  "title": "Hakkımızda",
+  "meta": {
+   "description": "Hakkımızda",
+   "keywords": "Hakkımızda",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan3/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/lagomlogosiyah.png",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/biz-kimiz",
+  "slug": "icerik__biz-kimiz",
+  "title": "Biz kimiz",
+  "meta": {
+   "description": "Biz Kimiz",
+   "keywords": "biz kimiz",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan3/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/lagomlogosiyah_2.png",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/misyonumuz",
+  "slug": "icerik__misyonumuz",
+  "title": "Misyonumuz",
+  "meta": {
+   "description": "Misyonumuz",
+   "keywords": "misyonumuz",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan3/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/lagomlogosiyah_3.png",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/vizyonumuz",
+  "slug": "icerik__vizyonumuz",
+  "title": "Vizyonumuz",
+  "meta": {
+   "description": "Vizyonumuz",
+   "keywords": "Vizyonumuz",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan3/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/lagomlogosiyah_1.png",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmetler",
+  "slug": "hizmetler",
+  "title": "Hizmetlerimiz",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/bireysel2.jpg",
+    "alt": "Bireysel Binalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/kurumsal2.jpg",
+    "alt": "Ticari Binalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/endustriyel2.jpg",
+    "alt": "Endüstriyel Proses ve Tesisler"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/kentsel-atik-su-64726-03440.jpg.jpeg",
+    "alt": "Kentsel Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/su-temini-64756-03354.jpg.jpeg",
+    "alt": "Su Temini"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/images_1.jpeg",
+    "alt": "Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmet/bireysel-binalar",
+  "slug": "hizmet__bireysel-binalar",
+  "title": "Bireysel binalar",
+  "meta": {
+   "description": "BİREYSEL BİNALAR",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/bireysel2.jpg",
+    "alt": "Bireysel Binalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmet/ticari-binalar",
+  "slug": "hizmet__ticari-binalar",
+  "title": "Ticari binalar",
+  "meta": {
+   "description": "",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/kurumsal2.jpg",
+    "alt": "Ticari Binalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmet/endüstriyel-proses-ve-tesisler",
+  "slug": "hizmet__endüstriyel-proses-ve-tesisler",
+  "title": "Endüstriyel proses ve tesisler",
+  "meta": {
+   "description": "ENDUSTRİYEL",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/endustriyel2.jpg",
+    "alt": "Endüstriyel Proses ve Tesisler"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmet/kentsel-atık-su",
+  "slug": "hizmet__kentsel-atık-su",
+  "title": "Kentsel atık su",
+  "meta": {
+   "description": "",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/kentsel-atik-su-64726-03440.jpg.jpeg",
+    "alt": "Kentsel Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmet/su-temini",
+  "slug": "hizmet__su-temini",
+  "title": "Su temini",
+  "meta": {
+   "description": "Ham su alımından arıtma ve dağıtmaya kadar tam entegrasyon olmalıdır.",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/su-temini-64756-03354.jpg.jpeg",
+    "alt": "Su Temini"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/hizmet/grundfos-pompa",
+  "slug": "hizmet__grundfos-pompa",
+  "title": "Grundfos pompa",
+  "meta": {
+   "description": "Grundfos 1945 yılından beri faaliyet gösteren dünyanın en büyük pompa üreticisidir.",
+   "keywords": "Grundfos,elektrik motorları,pompa,Grundfos pompa,lagom mühendislikPaylaş :",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan9/arka-plan_1.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/hizmetler/images_1.jpeg",
+    "alt": "Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberdetay/grundfos-pompa",
+  "slug": "haberdetay__grundfos-pompa",
+  "title": "Grundfos pompa",
+  "meta": {
+   "description": "Grundfos 1945 yılından beri faaliyet gösteren dünyanın en büyük pompa üreticisidir.",
+   "keywords": "Grundfos,elektrik motorları,pompa,Grundfos pompa,lagom mühendislik",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": "Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/grundfos-yetkili-bayii",
+  "slug": "icerik__grundfos-yetkili-bayii",
+  "title": "Grundfos yetkili bayii",
+  "meta": {
+   "description": "Grundfos, dünya çapında su çözümlerinin lideri olarak tanınır ve Türkiye'de bu sektörün en güvenilir temsilcisi Lagom Mühendislik",
+   "keywords": "Grundfos Türkiye Bayii,Grundfos Türkiye Distribütörü,Grundfos Servis Türkiye,Grundfos Yetkili Servis,Grundfos Teknik Destek Türkiye,Grundfos Pompa Türkiye",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan3/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/grundfos-turkiye_19062021124531.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/grundfos-servisleri",
+  "slug": "icerik__grundfos-servisleri",
+  "title": "Grundfos servisleri",
+  "meta": {
+   "description": "Grundfos, dünya çapında bir pompa üreticisi olarak tanınan ve sektördeki lider konumunu sürdüren bir şirkettir.",
+   "keywords": "Grundfos servisleri,pompa servisi,pompa bakımı,teknik destek,yedek parça temini,pompa onarımı,uzaktan izleme,enerji verimliliği,pompa kurulumu,müşteri memnuniyeti,pompa sistemleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan3/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/sayfalar/grundfos_1.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/referanslar",
+  "slug": "referanslar",
+  "title": "Referanslar",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan5/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak7.png",
+    "alt": "airflow"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak13.png",
+    "alt": "alfa laval"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak14.png",
+    "alt": "ao smith"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak-ayvaz.png",
+    "alt": "ayvaz"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak-baymak.png",
+    "alt": "baymak"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak4.png",
+    "alt": "bosch"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak3.png",
+    "alt": "buderus"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak5.png",
+    "alt": "danfoss"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak11.png",
+    "alt": "frankische"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak9.png",
+    "alt": "fullblaze"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak1.png",
+    "alt": "grundfos"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak12.png",
+    "alt": "honeywell"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberler",
+  "slug": "haberler",
+  "title": "Haberler",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": "Lagom Felsefesi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": "Ticari Binalar İçin Su Pompası"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": "Domestik Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/iletisim",
+  "slug": "iletisim",
+  "title": "İletişim",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/cim-ciu-grundfos-pompa",
+  "slug": "urun__cim-ciu-grundfos-pompa",
+  "title": "Cim/ciu - grundfos pompa",
+  "meta": {
+   "description": "CIM/CIU - Grundfos Pompa",
+   "keywords": "CIM/CIU,Grundfos Pompa",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/nopath-kopya-2.png_1.webp",
+    "alt": "CIM/CIU - Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/nopath-kopya-2.png.webp",
+    "alt": "CIM/CIU - Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/nopath-kopya-2.png_1.webp",
+    "alt": "CIM/CIU - Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/nopath-kopya-2.png.webp",
+    "alt": "CIM/CIU - Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/s-pompa",
+  "slug": "urun__s-pompa",
+  "title": "S pompa",
+  "meta": {
+   "description": "S pompalar, birçok kanalizasyon sisteminin en önemli parçasıdır. Gücünün ve dayanıklılığının yanı sıra çark açıklığı ayarlama sistemi SmartTrim ile sızıntı engelleme işlevi Smart Seal gibi yenilikçi özelliklerinden dolayı da tercih edilmektedir.",
+   "keywords": "S Pompa,Grundfos Pompa,Ağır Hizmet Tipi Atık Su Pompaları",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/s-1.jpeg.webp",
+    "alt": "S Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/s-1.jpeg.webp",
+    "alt": "S Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/s-1.jpeg.webp",
+    "alt": "S Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/s-1.jpeg.webp",
+    "alt": "S Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/hydro-multi-e",
+  "slug": "urun__hydro-multi-e",
+  "title": "Hydro multi-e",
+  "meta": {
+   "description": "Hydro Multi-E, özellikle bina hizmet uygulamaları için tasarlanan yenilikçi teknolojiye sahip bir hidrofor sistemidir.",
+   "keywords": "Hydro Multi-E,Grundfos Pompa,Basınçlandırma",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/hydro-multi-e.jpeg_1.webp",
+    "alt": "Hydro Multi-E"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/hydro-multi-e.jpeg_1.webp",
+    "alt": "Hydro Multi-E"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/hydro-multi-e.jpeg_1.webp",
+    "alt": "Hydro Multi-E"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/hydro-multi-e.jpeg_1.webp",
+    "alt": "Hydro Multi-E"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/grundfos-alpha2",
+  "slug": "urun__grundfos-alpha2",
+  "title": "Grundfos alpha2",
+  "meta": {
+   "description": "Başarısı kanıtlanmış Grundfos teknolojileriyle daha da geliştirilen yeni ALPHA2 küçük sirkülasyon pompası, enerji verimliliğinde rakipsizdir.",
+   "keywords": "Alpha2,Grundfos Pompa,Frekans Kontrollü Islak Rotorlu Pompalar",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/alpha-2.jpeg.webp",
+    "alt": "Grundfos Alpha2"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/alpha-2.jpeg.webp",
+    "alt": "Grundfos Alpha2"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/alpha-2.jpeg.webp",
+    "alt": "Grundfos Alpha2"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/alpha-2.jpeg.webp",
+    "alt": "Grundfos Alpha2"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/cr-cri-crn-yüksek-basınç-pompalar",
+  "slug": "urun__cr-cri-crn-yüksek-basınç-pompalar",
+  "title": "Cr, cri, crn yüksek basınç pompalar",
+  "meta": {
+   "description": "Hemen her endüstriyel uygulamaya cevap verecek şekilde tasarlanan temel CR pompa serisi, pompa çözümleri piyasasına en geniş ürün yelpazesini sunar.",
+   "keywords": "cr pompa,crı pompa,grundfos pompa,grundfos cr pompa,grundfos cr pompa serisi",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cr-cri-crn-555x555-1.jpeg.webp",
+    "alt": "CR, CRI, CRN Yüksek Basınç pompalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/cr-cri-crn-555x555-1.jpeg.webp",
+    "alt": "CR, CRI, CRN Yüksek Basınç pompalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cr-cri-crn-555x555-1.jpeg.webp",
+    "alt": "CR, CRI, CRN Yüksek Basınç pompalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/cr-cri-crn-555x555-1.jpeg.webp",
+    "alt": "CR, CRI, CRN Yüksek Basınç pompalar"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/sq",
+  "slug": "urun__sq",
+  "title": "Sq",
+  "meta": {
+   "description": "Grundfos SQ 3″ dalgıç pompalar, ihtiyaçlarınıza en uygun çözümü bulabilmenizi sağlar.",
+   "keywords": "SQ,Grundfos Pompa,Derin Kuyu",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/sq.png.webp",
+    "alt": "SQ"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/sq.png.webp",
+    "alt": "SQ"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/sq.png.webp",
+    "alt": "SQ"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/sq.png.webp",
+    "alt": "SQ"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/bmet-sistemi",
+  "slug": "urun__bmet-sistemi",
+  "title": "Bmet sistemi",
+  "meta": {
+   "description": "Grundfos BMET hidrofor modülü, seri olarak bağlanan bir BME ve BMT pompadan oluşur.",
+   "keywords": "BMET Sistemi,Grundfos Pompa,Su Arıtma Pompaları",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/bmet-sistemi-555x555.jpeg.webp",
+    "alt": "BMET Sistemi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/bmet-sistemi-555x555.jpeg.webp",
+    "alt": "BMET Sistemi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/bmet-sistemi-555x555.jpeg.webp",
+    "alt": "BMET Sistemi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/bmet-sistemi-555x555.jpeg.webp",
+    "alt": "BMET Sistemi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun/cmv-paket-hidrofor",
+  "slug": "urun__cmv-paket-hidrofor",
+  "title": "Cmv paket hidrofor",
+  "meta": {
+   "description": "Çok kademeli dikey santrifüj pompalardan oluşmuş basınçlandırma sistemleridir.",
+   "keywords": "Grundfos Pompa,Mono – Dikey Domestik Pompalar",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cmv-paket-hidrofor.jpeg.webp",
+    "alt": "CMV Paket Hidrofor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/cmv-paket-hidrofor.jpeg.webp",
+    "alt": "CMV Paket Hidrofor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cmv-paket-hidrofor.jpeg.webp",
+    "alt": "CMV Paket Hidrofor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/diger/cmv-paket-hidrofor.jpeg.webp",
+    "alt": "CMV Paket Hidrofor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/referans/airflow",
+  "slug": "referans__airflow",
+  "title": "Airflow",
+  "meta": {
+   "description": "airflow",
+   "keywords": "airflow",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan5/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak7.png",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberdetay/domestik-atık-su",
+  "slug": "haberdetay__domestik-atık-su",
+  "title": "Domestik atık su",
+  "meta": {
+   "description": "",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": "Domestik Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberdetay/ticari-binalar-i̇çin-su-pompası",
+  "slug": "haberdetay__ticari-binalar-i̇çin-su-pompası",
+  "title": "Ticari binalar i̇çin su pompası",
+  "meta": {
+   "description": "",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": "Ticari Binalar İçin Su Pompası"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberdetay/lagom-felsefesi",
+  "slug": "haberdetay__lagom-felsefesi",
+  "title": "Lagom felsefesi",
+  "meta": {
+   "description": "",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": "Lagom Felsefesi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan14/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/icerik/hakkimizda",
+  "slug": "icerik__hakkimizda",
+  "title": "İstediğiniz sayfa bulunamadı!",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/resource/error.png",
+    "alt": "İstediğiniz sayfa bulunamadı!"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urunler",
+  "slug": "urunler",
+  "title": "Ürünler",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan19/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/kategoriler/",
+    "alt": "ÜRÜNLERİMİZ"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/bayilerimiz",
+  "slug": "bayilerimiz",
+  "title": "Bayiler",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan16/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/referanslar/2",
+  "slug": "referanslar__2",
+  "title": "Referanslar",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan5/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak6.png",
+    "alt": "kodsan"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak10.png",
+    "alt": "limodor"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak2.png",
+    "alt": "miscea"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak8.png",
+    "alt": "nema"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberler/2",
+  "slug": "haberler__2",
+  "title": "Haberler",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/grundfoslogogorsel.jpg.webp",
+    "alt": "Grundfos Pompa"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/urun-kategori/urunlerimiz",
+  "slug": "urun-kategori__urunlerimiz",
+  "title": "Ürünleri̇mi̇z",
+  "meta": {
+   "description": "",
+   "keywords": "",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan18/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/nopath-kopya-2.png_1.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/s-1.jpeg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/hydro-multi-e.jpeg_1.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/alpha-2.jpeg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cr-cri-crn-555x555-1.jpeg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/sq.png.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/bmet-sistemi-555x555.jpeg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/urunler/cmv-paket-hidrofor.jpeg.webp",
+    "alt": ""
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/referanslar/1",
+  "slug": "referanslar__1",
+  "title": "Referanslar",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan5/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-9.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak7.png",
+    "alt": "airflow"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak13.png",
+    "alt": "alfa laval"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak14.png",
+    "alt": "ao smith"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak-ayvaz.png",
+    "alt": "ayvaz"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak-baymak.png",
+    "alt": "baymak"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak4.png",
+    "alt": "bosch"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak3.png",
+    "alt": "buderus"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak5.png",
+    "alt": "danfoss"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak11.png",
+    "alt": "frankische"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak9.png",
+    "alt": "fullblaze"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak1.png",
+    "alt": "grundfos"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/referanslar/ortak12.png",
+    "alt": "honeywell"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ },
+ {
+  "url": "https://lagommuhendislik.com/haberler/1",
+  "slug": "haberler__1",
+  "title": "Haberler",
+  "meta": {
+   "description": "Lagom Mühendislik Endüstriyel Makine İmalatı",
+   "keywords": "Grundfos türkiye,Grundfos pompa,Grundfos yetkili servis İstanbul,Grundfos yetkili servis,Grundfos pompa ve pompa sistemleri,Grundfos danışmanlık,mühendislik hizmetleri",
+   "google-site-verification": "77AqeY3dAjxcbc8sDqaDE7lhn0D2e9Babqrzn6I6Bsk",
+   "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+  },
+  "images": [
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/lagom-white-retina.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": "Lagom Mühendislik"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan13/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/lagom-felsefesi-900x450.jpg",
+    "alt": "Lagom Felsefesi"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050.jpg",
+    "alt": "Ticari Binalar İçin Su Pompası"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/haberler/guncel-valens-03050_1.jpg",
+    "alt": "Domestik Atık Su"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/images/background/pattern-5.png",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan1/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/arkaplan/arkaplan2/arka-plan.jpg",
+    "alt": "bg"
+   },
+   {
+    "src": "https://lagommuhendislik.com/tema/genel/uploads/logo/footer/lagomlogosiyah.png",
+    "alt": ""
+   }
+  ]
+ }
+]

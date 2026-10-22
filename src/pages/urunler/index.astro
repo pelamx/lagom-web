@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import ContactSheet from '../../components/ContactSheet.astro';
+import { products } from '../../data/products';
+---
+
+<Base title="Ürünler" description="Grundfos hidrofor, sirkülasyon, dalgıç, atık su ve yüksek basınç pompaları. Lagom Mühendislik yetkili bayi güvencesiyle.">
+  <section class="page-head">
+    <div class="container sheet-grid">
+      <div class="sheet-label">Ürünler <span class="muted">({products.length})</span></div>
+      <div>
+        <h1>Grundfos pompa ve sistemleri</h1>
+        <p class="lead">Burada öne çıkan modelleri görüyorsunuz. Listede olmayan bir Grundfos ürünü arıyorsanız sorun; tüm ürün gamını tedarik ediyoruz.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom: var(--section)">
+    <div class="container">
+      <ProductGrid products={products} />
+    </div>
+  </section>
+
+  <ContactSheet title="Aradığınız model listede yok mu? Fiyat ve teslim süresini hemen iletelim." />
+</Base>

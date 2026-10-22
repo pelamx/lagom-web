@@ -1,0 +1,36 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="mobile-bar" role="navigation" aria-label="Hızlı iletişim">
+  <a href={site.phoneHref}>Ara</a>
+  <a href={site.whatsappHref} target="_blank" rel="noopener">WhatsApp</a>
+  <a href="/iletisim#teklif" class="accent">Teklif iste</a>
+</div>
+
+<style>
+  .mobile-bar { display: none; }
+  @media (max-width: 760px) {
+    .mobile-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.3fr;
+      padding-bottom: env(safe-area-inset-bottom);
+      background: var(--bg);
+      border-top: 1px solid var(--rule);
+    }
+    a {
+      display: grid;
+      place-items: center;
+      height: 56px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-right: 1px solid var(--line);
+    }
+    a.accent { background: var(--accent); color: var(--accent-ink); border-right: 0; }
+  }
+</style>

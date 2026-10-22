@@ -1,0 +1,30 @@
+---
+import { brands } from '../data/services';
+---
+
+<ul class="brands">
+  {brands.map((b) => (
+    <li><img src={b.logo} alt={b.name} title={b.name} loading="lazy" class:list={{ boxed: b.boxed }} /></li>
+  ))}
+</ul>
+
+<style>
+  .brands {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--line);
+  }
+  li {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 2;
+    padding: 16px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  img { max-height: 38px; max-width: 100%; width: auto; filter: var(--brand-filter); opacity: 0.72; }
+  img.boxed { filter: var(--brand-filter-boxed); max-height: 30px; }
+  @media (max-width: 1000px) { .brands { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 480px) { .brands { grid-template-columns: repeat(3, 1fr); } }
+</style>
