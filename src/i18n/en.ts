@@ -183,7 +183,7 @@ const en: typeof tr = {
     label: 'Grundfos',
     title: 'Authorised Grundfos dealer',
     lead: 'We bring Grundfos’s product range and expertise to your project: the right product, genuine parts and technical support after the sale.',
-    photoAlt: 'Grundfos pump range',
+    photoAlt: 'Installed pump sets and pipework',
     facts: [
       { label: 'Founded', value: '1945, Denmark' },
       { label: 'Employees', value: '19,000+' },

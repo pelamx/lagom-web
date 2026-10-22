@@ -1,9 +1,9 @@
 /** Turkish: the source dictionary. Every other locale has exactly this shape. */
 export default {
   meta: {
-    tagline: 'Grundfos Yetkili Bayii',
+    tagline: 'Grundfos Yetkili Bayi',
     description:
-      'Lagom Mühendislik, Grundfos yetkili bayii olarak binalar, endüstri ve altyapı için pompa ve su sistemlerinin seçimini, tedarikini ve servisini sağlar.',
+      'Lagom Mühendislik, Grundfos yetkili bayi olarak binalar, endüstri ve altyapı için pompa ve su sistemlerinin seçimini, tedarikini ve servisini sağlar.',
   },
   site: {
     hours: 'Pazartesi – Cumartesi, 09:00 – 18:00',
@@ -39,11 +39,11 @@ export default {
     footerMenu: 'Alt menü',
   },
   footer: {
-    blurb: ['Grundfos yetkili bayii.', 'Pompa ve hidrofor sistemlerinde seçim, tedarik, devreye alma ve servis.'],
+    blurb: ['Grundfos yetkili bayi.', 'Pompa ve hidrofor sistemlerinde seçim, tedarik, devreye alma ve servis.'],
     products: 'Ürünler',
     solutions: 'Uygulama alanları',
     company: 'Firma',
-    grundfos: 'Grundfos yetkili bayii',
+    grundfos: 'Grundfos yetkili bayi',
     address: 'Adres',
     phone: 'Telefon',
     whatsapp: 'WhatsApp',
@@ -68,12 +68,12 @@ export default {
   },
 
   home: {
-    label: 'Grundfos Yetkili Bayii — Beyoğlu, İstanbul',
+    label: 'Grundfos Yetkili Bayi — Beyoğlu, İstanbul',
     title: ['Doğru ürün.', 'Doğru hizmet.', 'Ne eksik, ne fazla.'],
     lead: 'Bina, endüstri ve altyapı projelerinde pompa ve hidrofor sistemlerini seçiyor, tedarik ediyor, devreye alıyor ve servisini veriyoruz.',
     products: 'Ürünler',
     photoAlt: 'Raflarda Grundfos pompa kutuları',
-    block: { authority: 'Yetki', authorityValue: 'Grundfos yetkili bayii', location: 'Konum', hours: 'Çalışma saatleri', phone: 'Telefon' },
+    block: { authority: 'Yetki', authorityValue: 'Grundfos yetkili bayi', location: 'Konum', hours: 'Çalışma saatleri', phone: 'Telefon' },
     lagomLabel: 'Lagom',
     lagomLang: '(İsveççe)',
     manifesto: 'Lagom, “ne eksik, ne fazla” demek. Gereğinden büyük seçilen pompa boşa enerji harcar, küçük seçilen pompa erken yorulur.',
@@ -156,7 +156,7 @@ export default {
 
   about: {
     metaTitle: 'Hakkımızda',
-    metaDescription: 'Lagom Mühendislik; ısıtma, soğutma, su temini, atık su ve yangın koruma sistemlerinde Grundfos yetkili bayii.',
+    metaDescription: 'Lagom Mühendislik; ısıtma, soğutma, su temini, atık su ve yangın koruma sistemlerinde Grundfos yetkili bayi.',
     label: 'Hakkımızda',
     title: 'Tam olması gerektiği kadar.',
     lead: 'Isıtma, soğutma ve iklimlendirme, su arıtma, su temini, atık su uzaklaştırma, bina teknolojileri ve yangın koruma sistemlerinde ihtiyaca uygun doğru ürünü seçerek kalıcı ve sürdürülebilir çözümler üretiyoruz.',
@@ -169,7 +169,7 @@ export default {
     missionLabel: 'Misyon',
     mission: 'Bugüne kadar olduğu gibi, yaptığımız her işte doğru, dürüst, hızlı, ekonomik ve kaliteli hizmet sunmak.',
     grundfosLabel: 'Grundfos',
-    grundfosBig: '1945’ten bu yana dünyanın en büyük pompa üreticisinin yetkili bayiiyiz.',
+    grundfosBig: '1945’ten bu yana dünyanın en büyük pompa üreticisinin yetkili bayiyiz.',
     grundfosText: 'Grundfos ürünlerinin satışını, projelendirmesini ve satış sonrası servisini uzman ekibimizle sağlıyoruz.',
     grundfosLink: 'Yetkili bayilik hakkında',
     brandsLabel: 'Markalar',
@@ -177,12 +177,12 @@ export default {
   },
 
   grundfos: {
-    metaTitle: 'Grundfos Yetkili Bayii',
-    metaDescription: 'Lagom Mühendislik, İstanbul’da Grundfos yetkili bayii. Orijinal Grundfos ürünleri, satış sonrası destek ve teknik servis.',
+    metaTitle: 'Grundfos Yetkili Bayi',
+    metaDescription: 'Lagom Mühendislik, İstanbul’da Grundfos yetkili bayi. Orijinal Grundfos ürünleri, satış sonrası destek ve teknik servis.',
     label: 'Grundfos',
-    title: 'Grundfos yetkili bayii',
+    title: 'Grundfos yetkili bayi',
     lead: 'Grundfos’un ürün yelpazesini ve uzmanlığını projelere taşıyoruz: doğru ürün, orijinal parça, satış sonrası teknik destek.',
-    photoAlt: 'Grundfos pompa ürün gamı',
+    photoAlt: 'Kurulu pompa setleri ve tesisat boruları',
     facts: [
       { label: 'Kuruluş', value: '1945, Danimarka' },
       { label: 'Çalışan', value: '19.000+' },
@@ -253,7 +253,7 @@ export default {
       title: 'Seçim ve projelendirme',
       text: 'Debi, basma yüksekliği ve kullanım koşullarına göre pompayı boyutlandırır, gerekirse sistemi projelendiririz.',
     },
-    { title: 'Tedarik', text: 'Grundfos yetkili bayii olarak orijinal ürünü ve yedek parçayı doğrudan sağlarız.' },
+    { title: 'Tedarik', text: 'Grundfos yetkili bayi olarak orijinal ürünü ve yedek parçayı doğrudan sağlarız.' },
     { title: 'Devreye alma', text: 'Kurulumdan sonra sistemi ayarlar, çalıştırır ve çalışır hâlde teslim ederiz.' },
     { title: 'Bakım ve servis', text: 'Periyodik bakım, arıza onarımı ve teknik destekle sistemin ömrü boyunca yanınızdayız.' },
   ],

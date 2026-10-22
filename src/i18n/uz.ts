@@ -184,7 +184,7 @@ const uz: typeof tr = {
     label: 'Grundfos',
     title: 'Grundfos rasmiy dileri',
     lead: 'Grundfos mahsulotlari va tajribasini loyihangizga olib kelamiz: to‘g‘ri mahsulot, original ehtiyot qismlar va sotuvdan keyingi texnik yordam.',
-    photoAlt: 'Grundfos nasoslari assortimenti',
+    photoAlt: 'O‘rnatilgan nasos agregatlari va quvurlar',
     facts: [
       { label: 'Tashkil topgan', value: '1945, Daniya' },
       { label: 'Xodimlar', value: '19 000+' },

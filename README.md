@@ -1,6 +1,6 @@
 # lagom-web
 
-[lagommuhendislik.com](https://lagommuhendislik.com) için yeniden tasarlanan site. Lagom Mühendislik, Grundfos yetkili bayii.
+[lagommuhendislik.com](https://lagommuhendislik.com) için yeniden tasarlanan site. Lagom Mühendislik, Grundfos yetkili bayi.
 
 Hedef: sade, anlaşılır, kullanması kolay. Site yalnızca iki şeye odaklanır: **ürünler** ve **hizmetler**.
 
@@ -61,6 +61,11 @@ docs/crawl/      # eski sitenin taranmış metinleri (kaynak arşivi)
 - Marka ürün aileleri `src/data/brands.ts` içindeki serilerle **sırayla** eşleşir; aile eklerken dört dilde aynı sıraya eklenmeli.
 - Özbekçede `o‘` / `g‘` için `‘` (U+2018) kullanılır; resmi `ʻ` (U+02BB) IBM Plex fontunda olmadığı için boşluklu görünüyordu.
 - Sayfalarda `hreflang` etiketleri vardır; arama motorları her dili ayrı sayfa olarak tanır.
+
+## Görsel kaynakları
+
+- Grundfos sayfasındaki pompa seti fotoğrafı: Jahhid Fitrah Alamsyah, [Unsplash](https://unsplash.com/photos/2Z7K3Oxig98) — Unsplash Lisansı (ticari kullanım serbest, atıf zorunlu değil).
+- Diğer görseller eski lagommuhendislik.com sitesinden alınmıştır.
 
 ## Eski siteden taşınanlar
 
