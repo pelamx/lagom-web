@@ -77,17 +77,17 @@
   --sans: 'IBM Plex Sans Variable', 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* Logo: visible width matched to the reference site (≈155px on phones → ≈196px on desktop).
-     The PNG is 372×168 with ~2% padding, hence 162 → 205px for the image box. */
-  --logo-w: clamp(162px, calc(146px + 4.1vw), 205px);
+  /* Logo: 75% of the reference site's size — visible ≈116px on phones → ≈147px on desktop.
+     The PNG is 372×168 with ~2% padding, hence ≈122 → 154px for the image box. */
+  --logo-w: clamp(121.5px, calc(109.5px + 3.075vw), 153.75px);
   --logo-h: calc(var(--logo-w) * 168 / 372);
   --header-pad: clamp(11px, 1.4vw, 14px);
   /* Full header height incl. its 1px bottom border; sticky bars and the mobile menu sit below it. */
   --header-h: calc(var(--logo-h) + 2 * var(--header-pad) + 1px);
 }
-/* Below 350px the full-size logo cannot share the row with the language and menu buttons. */
+/* Below 350px the logo steps down so it can share the row with the language and menu buttons. */
 @media (max-width: 350px) {
-  :root { --logo-w: 136px; }
+  :root { --logo-w: 102px; }
 }
 
 *,
