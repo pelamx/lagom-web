@@ -73,7 +73,7 @@ const en: typeof tr = {
     title: ['The right product.', 'The right service.', 'No more, no less.'],
     lead: 'We select, supply, commission and service pump and booster systems for building, industrial and infrastructure projects.',
     products: 'Products',
-    photoAlt: 'Grundfos pump boxes on warehouse shelves',
+    photoAlt: 'Blue water pipework with flanged elbows',
     block: { authority: 'Status', authorityValue: 'Authorised Grundfos dealer', location: 'Location', hours: 'Opening hours', phone: 'Phone' },
     lagomLabel: 'Lagom',
     lagomLang: '(Swedish)',

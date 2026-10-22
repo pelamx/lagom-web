@@ -72,7 +72,7 @@ export default {
     title: ['Doğru ürün.', 'Doğru hizmet.', 'Ne eksik, ne fazla.'],
     lead: 'Bina, endüstri ve altyapı projelerinde pompa ve hidrofor sistemlerini seçiyor, tedarik ediyor, devreye alıyor ve servisini veriyoruz.',
     products: 'Ürünler',
-    photoAlt: 'Raflarda Grundfos pompa kutuları',
+    photoAlt: 'Flanşlı dirsekleriyle mavi su tesisatı boruları',
     block: { authority: 'Yetki', authorityValue: 'Grundfos yetkili bayi', location: 'Konum', hours: 'Çalışma saatleri', phone: 'Telefon' },
     lagomLabel: 'Lagom',
     lagomLang: '(İsveççe)',

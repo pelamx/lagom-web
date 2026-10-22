@@ -74,7 +74,7 @@ const uz: typeof tr = {
     title: ['To‘g‘ri mahsulot.', 'To‘g‘ri xizmat.', 'Na kam, na ortiq.'],
     lead: 'Bino, sanoat va infratuzilma loyihalari uchun nasos va bosim oshirish tizimlarini tanlaymiz, yetkazib beramiz, ishga tushiramiz va xizmat ko‘rsatamiz.',
     products: 'Mahsulotlar',
-    photoAlt: 'Ombor javonlaridagi Grundfos nasos qutilari',
+    photoAlt: 'Flanesli tirsaklari bilan ko‘k suv quvurlari',
     block: { authority: 'Maqom', authorityValue: 'Grundfos rasmiy dileri', location: 'Manzil', hours: 'Ish vaqti', phone: 'Telefon' },
     lagomLabel: 'Lagom',
     lagomLang: '(shved tilida)',

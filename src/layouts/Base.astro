@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { locale, t } = useT(Astro.url);
-const { title, description = t.meta.description, image = '/images/site/depo.jpg' } = Astro.props;
+const { title, description = t.meta.description, image = '/images/site/hero-borular.jpg' } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${t.meta.tagline}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url(image), Astro.site).href;

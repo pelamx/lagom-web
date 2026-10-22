@@ -64,6 +64,7 @@ docs/crawl/      # eski sitenin taranmış metinleri (kaynak arşivi)
 
 ## Görsel kaynakları
 
+- Ana sayfa görseli (mavi su boruları): Danylo Sorokin, [Unsplash](https://unsplash.com/photos/rYQlRntSU0E) — Unsplash Lisansı; yatay kesit olarak kırpıldı.
 - Grundfos sayfasındaki pompa seti fotoğrafı: Jahhid Fitrah Alamsyah, [Unsplash](https://unsplash.com/photos/2Z7K3Oxig98) — Unsplash Lisansı (ticari kullanım serbest, atıf zorunlu değil).
 - Diğer görseller eski lagommuhendislik.com sitesinden alınmıştır.
 
