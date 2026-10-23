@@ -61,10 +61,11 @@ docs/crawl/      # eski sitenin taranmış metinleri (kaynak arşivi)
 - Marka ürün aileleri `src/data/brands.ts` içindeki serilerle **sırayla** eşleşir; aile eklerken dört dilde aynı sıraya eklenmeli.
 - Özbekçede `o‘` / `g‘` için `‘` (U+2018) kullanılır; resmi `ʻ` (U+02BB) IBM Plex fontunda olmadığı için boşluklu görünüyordu.
 - Sayfalarda `hreflang` etiketleri vardır; arama motorları her dili ayrı sayfa olarak tanır.
+- **Otomatik dil:** ziyaretçinin cihaz saat dilimine göre sayfa, ilk çizimden önce aynı sayfanın uygun dildeki karşılığına geçer: Özbekistan → UZ, Rusya → RU, Türkiye → TR, diğer ülkeler → EN (`src/layouts/Base.astro`). TR · EN · RU · UZ butonlarıyla elle seçilen dil hatırlanır ve her zaman önceliklidir. Arama motoru botları yönlendirilmez; 404 sayfası yönlendirilmez.
 
 ## Görsel kaynakları
 
-- Ana sayfa çizimi sitenin kendi SVG bileşenidir: `src/components/CityDrawing.astro`. Üç pafta vardır: Beyoğlu (varsayılan), Taşkent ve Moskova. Ziyaretçinin cihaz saat dilimi Özbekistan ise Taşkent, Rusya ise Moskova gösterilir (statik sitede IP okunamadığı için saat dilimi kullanılır; ağ isteği ve üçüncü taraf servis yok). Test için `?city=tashkent`, `?city=moscow`, `?city=istanbul`.
+- Ana sayfa çizimi sitenin kendi SVG bileşenidir: `src/components/CityDrawing.astro`. Üç pafta vardır: Beyoğlu (varsayılan), Taşkent ve Moskova. Otomatik dil ile aynı saat dilimi tespitini kullanır: Özbekistan → Taşkent, Rusya → Moskova (statik sitede IP okunamadığı için saat dilimi kullanılır; ağ isteği ve üçüncü taraf servis yok). Test için `?city=tashkent`, `?city=moscow`, `?city=istanbul`.
 - Paylaşım önizlemesi `public/images/site/og-cizim.png` Beyoğlu çiziminden üretilmiştir; çizim değişirse yeniden üretilmeli.
 - Grundfos sayfasındaki pompa seti fotoğrafı: Jahhid Fitrah Alamsyah, [Unsplash](https://unsplash.com/photos/2Z7K3Oxig98) — Unsplash Lisansı (ticari kullanım serbest, atıf zorunlu değil).
 - Diğer görseller eski lagommuhendislik.com sitesinden alınmıştır.

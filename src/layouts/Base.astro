@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
 import { site } from '../data/site';
-import { useT, alternates, languages, defaultLocale } from '../i18n';
+import { useT, parse, alternates, languages, defaultLocale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -19,6 +19,8 @@ const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${t.meta.t
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url(image), Astro.site).href;
 const alts = alternates(Astro.url).map((a) => ({ ...a, abs: new URL(a.href, Astro.site).href }));
+// Pages without a twin in every language (404) are never switched: their alternates only point at the home pages.
+const known = parse(Astro.url).key !== null;
 // A copy served under a sub-path (GitHub Pages preview) must not compete with the real domain in search.
 const isPreview = import.meta.env.BASE_URL !== '/';
 ---
@@ -37,6 +39,48 @@ const isPreview = import.meta.env.BASE_URL !== '/';
     <link rel="icon" type="image/png" href={url('/favicon.png')} />
     <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)" />
+
+    <!--
+      Region from the device time zone (the site is static, so there is no IP to read): Uzbekistan → uz, Russia → ru,
+      Türkiye → tr, anywhere else → en. It picks the hero city (CityDrawing) and, below, the language.
+    -->
+    <script is:inline>
+      (() => {
+        const ru = 'Kaliningrad Moscow Kirov Volgograd Astrakhan Saratov Ulyanovsk Samara'.split(' ').map((z) => 'Europe/' + z)
+          .concat('Yekaterinburg Omsk Novosibirsk Barnaul Tomsk Novokuznetsk Krasnoyarsk Irkutsk Chita Yakutsk Khandyga Vladivostok Ust-Nera Magadan Sakhalin Srednekolymsk Kamchatka Anadyr'.split(' ').map((z) => 'Asia/' + z));
+        let tz = '';
+        try {
+          tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        } catch {}
+        if (!tz) return;
+        document.documentElement.dataset.region =
+          tz === 'Asia/Tashkent' || tz === 'Asia/Samarkand' ? 'uz'
+          : ru.includes(tz) ? 'ru'
+          : tz === 'Europe/Istanbul' || tz === 'Asia/Istanbul' || tz === 'Turkey' ? 'tr'
+          : 'en';
+      })();
+    </script>
+    {
+      known && (
+        <script is:inline>
+          // Open the page in the visitor's language before first paint: a language picked with the TR/EN/RU/UZ buttons
+          // (Header) wins, otherwise the region's. Crawlers are left alone so every language stays indexable.
+          (() => {
+            if (/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) return;
+            const root = document.documentElement;
+            let lang = '';
+            try {
+              lang = localStorage.getItem('lang') || '';
+            } catch {}
+            if (!['tr', 'en', 'ru', 'uz'].includes(lang)) lang = root.dataset.region || '';
+            if (!lang || lang === root.lang) return;
+            const alt = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+            // path only: the absolute hreflang URLs name the production domain, the page may be served elsewhere
+            if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+          })();
+        </script>
+      )
+    }
 
     <!-- apply a saved theme before first paint -->
     <script is:inline>

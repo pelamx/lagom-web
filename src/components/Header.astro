@@ -74,7 +74,7 @@ const langs = alternates(Astro.url);
     menu.setAttribute('aria-expanded', String(open));
   });
 
-  // A language picked by hand overrides IP-based detection from now on.
+  // A language picked by hand overrides time-zone detection (Base.astro) from now on.
   document.querySelectorAll<HTMLAnchorElement>('.langs a').forEach((a) =>
     a.addEventListener('click', () => {
       try {

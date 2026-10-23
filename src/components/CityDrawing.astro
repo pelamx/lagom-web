@@ -2,8 +2,7 @@
 /**
  * Hero artwork: an architect's elevation of a city skyline, drawn as inline SVG so it follows the theme colours.
  * Three sheets are rendered — Beyoğlu (default), Tashkent and Moscow — and a tiny inline script picks one before
- * first paint from the visitor's time zone (Uzbekistan → Tashkent, Russia → Moscow). The site is static, so there
- * is no server to read the IP; the time zone needs no network request and no third party. `?city=tashkent` /
+ * first paint from the visitor's time-zone region set in Base.astro (Uzbekistan → Tashkent, Russia → Moscow). `?city=tashkent` /
  * `?city=moscow` / `?city=istanbul` forces a sheet for checking.
  *
  * Buildings are placed by hand; windows, floor lines and dimensions are generated.
@@ -454,18 +453,13 @@ const sheets = drawn.map((s) => ({ ...s, step: step(s.strokes) }));
 <!-- pick the sheet before the figures are parsed, so the wrong city never flashes -->
 <script is:inline>
   (() => {
+    // region comes from the time zone, worked out in Base.astro
     const cities = ['istanbul', 'tashkent', 'moscow'];
-    // Russia's IANA zones (Crimea's Europe/Simferopol deliberately left out)
-    const ru = 'Kaliningrad Moscow Kirov Volgograd Astrakhan Saratov Ulyanovsk Samara'.split(' ').map((z) => 'Europe/' + z)
-      .concat('Yekaterinburg Omsk Novosibirsk Barnaul Tomsk Novokuznetsk Krasnoyarsk Irkutsk Chita Yakutsk Khandyga Vladivostok Ust-Nera Magadan Sakhalin Srednekolymsk Kamchatka Anadyr'.split(' ').map((z) => 'Asia/' + z));
     let city = '';
     try {
       city = new URLSearchParams(location.search).get('city') || '';
-      if (!cities.includes(city)) {
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-        city = tz === 'Asia/Tashkent' || tz === 'Asia/Samarkand' ? 'tashkent' : ru.includes(tz) ? 'moscow' : '';
-      }
     } catch {}
+    if (!cities.includes(city)) city = { uz: 'tashkent', ru: 'moscow' }[document.documentElement.dataset.region] || '';
     if (city) document.documentElement.dataset.city = city;
   })();
 </script>
