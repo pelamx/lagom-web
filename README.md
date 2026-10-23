@@ -64,7 +64,8 @@ docs/crawl/      # eski sitenin taranmış metinleri (kaynak arşivi)
 
 ## Görsel kaynakları
 
-- Ana sayfa çizimi (Beyoğlu silueti) sitenin kendi SVG bileşenidir: `src/components/CityDrawing.astro`. Paylaşım önizlemesi `public/images/site/og-cizim.png` bu çizimden üretilmiştir; çizim değişirse yeniden üretilmeli.
+- Ana sayfa çizimi sitenin kendi SVG bileşenidir: `src/components/CityDrawing.astro`. Üç pafta vardır: Beyoğlu (varsayılan), Taşkent ve Moskova. Ziyaretçinin cihaz saat dilimi Özbekistan ise Taşkent, Rusya ise Moskova gösterilir (statik sitede IP okunamadığı için saat dilimi kullanılır; ağ isteği ve üçüncü taraf servis yok). Test için `?city=tashkent`, `?city=moscow`, `?city=istanbul`.
+- Paylaşım önizlemesi `public/images/site/og-cizim.png` Beyoğlu çiziminden üretilmiştir; çizim değişirse yeniden üretilmeli.
 - Grundfos sayfasındaki pompa seti fotoğrafı: Jahhid Fitrah Alamsyah, [Unsplash](https://unsplash.com/photos/2Z7K3Oxig98) — Unsplash Lisansı (ticari kullanım serbest, atıf zorunlu değil).
 - Diğer görseller eski lagommuhendislik.com sitesinden alınmıştır.
 

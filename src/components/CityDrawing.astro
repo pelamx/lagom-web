@@ -1,7 +1,12 @@
 ---
 /**
- * Hero artwork: an architect's elevation of a Beyoğlu-like skyline, drawn as inline SVG so it follows the
- * theme colours. Buildings are placed by hand; windows, floor lines and dimensions are generated.
+ * Hero artwork: an architect's elevation of a city skyline, drawn as inline SVG so it follows the theme colours.
+ * Three sheets are rendered — Beyoğlu (default), Tashkent and Moscow — and a tiny inline script picks one before
+ * first paint from the visitor's time zone (Uzbekistan → Tashkent, Russia → Moscow). The site is static, so there
+ * is no server to read the IP; the time zone needs no network request and no third party. `?city=tashkent` /
+ * `?city=moscow` / `?city=istanbul` forces a sheet for checking.
+ *
+ * Buildings are placed by hand; windows, floor lines and dimensions are generated.
  * Outlines "draw themselves" on load (pathLength + dashoffset); everything else fades in after.
  */
 import { useT } from '../i18n';
@@ -14,20 +19,74 @@ const H = 800;
 const G = 600; // ground line
 const M = 7.6; // drawing units per metre (1:500 at this size)
 
-type Kind = 'house' | 'block' | 'stepped' | 'mosque' | 'tower' | 'galata';
-const city: { kind: Kind; x: number; w: number; h: number; axis?: string }[] = [
-  { kind: 'house', x: 150, w: 110, h: 92, axis: 'A' },
-  { kind: 'block', x: 276, w: 118, h: 214 },
-  { kind: 'stepped', x: 410, w: 150, h: 300, axis: 'B' },
-  { kind: 'mosque', x: 612, w: 270, h: 80, axis: 'C' },
-  { kind: 'block', x: 918, w: 140, h: 252 },
-  { kind: 'tower', x: 1076, w: 120, h: 396, axis: 'D' },
-  { kind: 'block', x: 1212, w: 104, h: 178 },
-  { kind: 'galata', x: 1338, w: 110, h: 300, axis: 'E' },
-  { kind: 'block', x: 1480, w: 160, h: 232 },
-  { kind: 'stepped', x: 1656, w: 130, h: 340, axis: 'F' },
-  { kind: 'house', x: 1806, w: 100, h: 104 },
-  { kind: 'block', x: 1922, w: 76, h: 160 },
+type Kind =
+  | 'house' | 'block' | 'stepped' | 'tower'
+  | 'mosque' | 'galata' // Istanbul
+  | 'hotel' | 'madrasa' | 'imam' | 'museum' // Tashkent
+  | 'stalin' | 'wall' | 'spasskaya' | 'basil'; // Moscow
+type Building = { kind: Kind; x: number; w: number; h: number; axis?: string };
+type CityId = 'istanbul' | 'tashkent' | 'moscow';
+type City = {
+  id: CityId;
+  buildings: Building[];
+  landmark: { kind: Kind; height: string; dimX: number }; // levelled at its peak, with a vertical dimension at dimX
+  secondary: Kind; // levelled at its main roof, value computed from the drawing
+};
+
+const cities: City[] = [
+  {
+    id: 'istanbul',
+    buildings: [
+      { kind: 'house', x: 150, w: 110, h: 92, axis: 'A' },
+      { kind: 'block', x: 276, w: 118, h: 214 },
+      { kind: 'stepped', x: 410, w: 150, h: 300, axis: 'B' },
+      { kind: 'mosque', x: 612, w: 270, h: 80, axis: 'C' },
+      { kind: 'block', x: 918, w: 140, h: 252 },
+      { kind: 'tower', x: 1076, w: 120, h: 396, axis: 'D' },
+      { kind: 'block', x: 1212, w: 104, h: 178 },
+      { kind: 'galata', x: 1338, w: 110, h: 300, axis: 'E' },
+      { kind: 'block', x: 1480, w: 160, h: 232 },
+      { kind: 'stepped', x: 1656, w: 130, h: 340, axis: 'F' },
+      { kind: 'house', x: 1806, w: 100, h: 104 },
+      { kind: 'block', x: 1922, w: 76, h: 160 },
+    ],
+    landmark: { kind: 'galata', height: '66.90', dimX: 1478 },
+    secondary: 'tower',
+  },
+  {
+    // Hotel Uzbekistan, Kukeldash Madrasa, Hazrati Imam mosque (53 m minarets), Amir Timur Museum
+    id: 'tashkent',
+    buildings: [
+      { kind: 'block', x: 150, w: 100, h: 130, axis: 'A' },
+      { kind: 'block', x: 266, w: 110, h: 200 },
+      { kind: 'hotel', x: 400, w: 230, h: 400, axis: 'B' },
+      { kind: 'madrasa', x: 690, w: 300, h: 70, axis: 'C' },
+      { kind: 'imam', x: 1080, w: 240, h: 96, axis: 'D' },
+      { kind: 'museum', x: 1420, w: 150, h: 104, axis: 'E' },
+      { kind: 'block', x: 1596, w: 100, h: 230 },
+      { kind: 'stepped', x: 1716, w: 130, h: 330, axis: 'F' },
+      { kind: 'block', x: 1866, w: 70, h: 150 },
+    ],
+    landmark: { kind: 'imam', height: '53.00', dimX: 1384 },
+    secondary: 'hotel',
+  },
+  {
+    // a Stalinist high-rise, the Kremlin wall, Spasskaya Tower (71 m with the star), St Basil's Cathedral
+    id: 'moscow',
+    buildings: [
+      { kind: 'block', x: 150, w: 100, h: 150, axis: 'A' },
+      { kind: 'stalin', x: 280, w: 260, h: 330, axis: 'B' },
+      { kind: 'wall', x: 560, w: 340, h: 80, axis: 'C' },
+      { kind: 'spasskaya', x: 900, w: 100, h: 250 },
+      { kind: 'wall', x: 1000, w: 150, h: 80 },
+      { kind: 'basil', x: 1180, w: 280, h: 60, axis: 'D' },
+      { kind: 'block', x: 1490, w: 130, h: 220, axis: 'E' },
+      { kind: 'stepped', x: 1650, w: 140, h: 300, axis: 'F' },
+      { kind: 'block', x: 1810, w: 100, h: 180 },
+    ],
+    landmark: { kind: 'spasskaya', height: '71.00', dimX: 1030 },
+    secondary: 'stalin',
+  },
 ];
 
 const n = (v: number) => Math.round(v * 10) / 10;
@@ -35,174 +94,386 @@ const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const rectPath = (x: number, y: number, w: number, h: number) => `M${n(x)} ${n(y)}h${n(w)}v${n(h)}h${n(-w)}Z`;
 const archPath = (x: number, y: number, w: number, h: number) =>
   `M${n(x)} ${n(y + h)}V${n(y + w / 2)}A${n(w / 2)} ${n(w / 2)} 0 0 1 ${n(x + w)} ${n(y + w / 2)}V${n(y + h)}Z`;
+// equilateral pointed arch: two arcs of radius w springing from the jambs
+const pointedPath = (x: number, y: number, w: number, h: number) => {
+  const rise = w * 0.866;
+  return `M${n(x)} ${n(y + h)}V${n(y + rise)}A${n(w)} ${n(w)} 0 0 1 ${n(x + w / 2)} ${n(y)}A${n(w)} ${n(w)} 0 0 1 ${n(x + w)} ${n(y + rise)}V${n(y + h)}Z`;
+};
+// onion dome sitting on a drum top at y; widest at about a third of its height
+const onionPath = (cx: number, y: number, w: number, h: number) =>
+  `M${n(cx - w * 0.3)} ${y}C${n(cx - w * 0.75)} ${n(y - h * 0.25)} ${n(cx - w * 0.55)} ${n(y - h * 0.65)} ${n(cx)} ${n(y - h)}` +
+  `C${n(cx + w * 0.55)} ${n(y - h * 0.65)} ${n(cx + w * 0.75)} ${n(y - h * 0.25)} ${n(cx + w * 0.3)} ${y}Z`;
+const starPath = (cx: number, cy: number, r: number) =>
+  Array.from({ length: 10 }, (_, k) => {
+    const a = (k * Math.PI) / 5 - Math.PI / 2;
+    const rr = k % 2 ? r * 0.42 : r;
+    return `${k ? 'L' : 'M'}${n(cx + rr * Math.cos(a))} ${n(cy + rr * Math.sin(a))}`;
+  }).join('') + 'Z';
+const mono = (x: number, y: number, text: string, cls = '', anchor = 'start', extra = '') =>
+  `<text class="t ${cls}" x="${n(x)}" y="${n(y)}" text-anchor="${anchor}" ${extra}>${esc(text)}</text>`;
+const tick = (x: number, y: number) => `<path class="a" d="M${n(x - 6)} ${n(y + 6)}L${n(x + 6)} ${n(y - 6)}"/>`;
+const level = (x: number, y: number, label: string) =>
+  `<path class="a" d="M${n(x - 8)} ${n(y - 13)}H${n(x + 8)}L${n(x)} ${n(y)}Z"/><path class="a" d="M${n(x)} ${n(y)}H${n(x + 92)}"/>` +
+  mono(x + 14, y - 8, label, 'acc');
 
-const outlines: string[] = []; // drawn with the pen animation
-const details: string[] = []; // windows, courses, openings
-const notes: string[] = []; // dimensions, levels, axes, text (accent / mono)
-const wide: string[] = []; // sheet furniture near the edges, hidden on the narrow phone crop
-let order = 0;
-const outline = (dPath: string) => outlines.push(`<path class="o" pathLength="1" style="--i:${order++}" d="${dPath}"/>`);
-const detail = (el: string) => details.push(el);
+function drawCity(city: City) {
+  const outlines: string[] = []; // drawn with the pen animation
+  const details: string[] = []; // windows, courses, openings
+  const notes: string[] = []; // dimensions, levels, axes, text (accent / mono)
+  const wide: string[] = []; // sheet furniture near the edges, hidden on the narrow phone crop
+  let order = 0;
+  const outline = (dPath: string) => outlines.push(`<path class="o" pathLength="1" style="--i:${order++}" d="${dPath}"/>`);
+  const detail = (el: string) => details.push(el);
+  const dPath = (p: string, cls = 'd') => detail(`<path class="${cls}" d="${p}"/>`);
 
-function windowGrid(x: number, top: number, w: number, bottom: number, opts: { ww?: number; wh?: number; pitch?: number; row?: number } = {}) {
-  const { ww = 8, wh = 12, pitch = 20, row = 26 } = opts;
-  const cols = Math.max(1, Math.floor((w - 16) / pitch));
-  const start = x + (w - (cols - 1) * pitch - ww) / 2;
-  for (let y = bottom - wh; y > top + 12; y -= row) {
-    for (let c = 0; c < cols; c++) detail(`<rect class="w" x="${n(start + c * pitch)}" y="${n(y)}" width="${ww}" height="${wh}"/>`);
+  function windowGrid(x: number, top: number, w: number, bottom: number, opts: { ww?: number; wh?: number; pitch?: number; row?: number } = {}) {
+    const { ww = 8, wh = 12, pitch = 20, row = 26 } = opts;
+    const cols = Math.max(1, Math.floor((w - 16) / pitch));
+    const start = x + (w - (cols - 1) * pitch - ww) / 2;
+    for (let y = bottom - wh; y > top + 12; y -= row) {
+      for (let c = 0; c < cols; c++) detail(`<rect class="w" x="${n(start + c * pitch)}" y="${n(y)}" width="${ww}" height="${wh}"/>`);
+    }
   }
-}
-
-const tops: Record<number, number> = {}; // building index → highest y, for levels
-
-city.forEach((b, i) => {
-  const top = G - b.h;
-  const cx = b.x + b.w / 2;
-  if (b.kind === 'house') {
-    outline(rectPath(b.x, top, b.w, b.h));
-    outline(`M${b.x - 8} ${top}L${n(cx)} ${top - 52}L${b.x + b.w + 8} ${top}`);
-    detail(`<path class="d" d="${rectPath(b.x + b.w * 0.68, top - 40, 14, 22)}"/>`);
-    detail(`<path class="d" d="${rectPath(cx - 9, G - 32, 18, 32)}"/>`);
-    detail(`<rect class="w" x="${b.x + 14}" y="${top + 22}" width="16" height="18"/><rect class="w" x="${b.x + b.w - 30}" y="${top + 22}" width="16" height="18"/>`);
-    tops[i] = top - 52;
-  }
-  if (b.kind === 'block') {
-    outline(rectPath(b.x, top, b.w, b.h));
-    detail(`<path class="d" d="M${b.x} ${top + 8}h${b.w}"/>`);
-    detail(`<path class="d" d="${rectPath(b.x + 12, G - 24, b.w - 24, 24)}"/>`);
-    windowGrid(b.x, top + 8, b.w, G - 34);
-    tops[i] = top;
-  }
-  if (b.kind === 'stepped') {
-    const h1 = b.h * 0.6;
-    const h2 = b.h * 0.25;
-    const a = b.w * 0.12;
-    const c = b.w * 0.26;
+  // stepped massing: full-width base, two set-back tiers, as a single outline
+  function stepped(b: Building, h1: number, h2: number, a: number, c: number) {
+    const top = G - b.h;
     outline(
       `M${b.x} ${G}V${n(G - h1)}H${n(b.x + a)}V${n(G - h1 - h2)}H${n(b.x + c)}V${top}H${n(b.x + b.w - c)}V${n(G - h1 - h2)}H${n(b.x + b.w - a)}V${n(G - h1)}H${b.x + b.w}V${G}`,
     );
     windowGrid(b.x, G - h1, b.w, G - 10);
     windowGrid(b.x + a, G - h1 - h2, b.w - 2 * a, G - h1);
     windowGrid(b.x + c, top, b.w - 2 * c, G - h1 - h2);
-    tops[i] = top;
   }
-  if (b.kind === 'tower') {
-    outline(rectPath(b.x, top, b.w, b.h));
-    outline(rectPath(b.x + b.w * 0.2, top - 46, b.w * 0.6, 46));
-    outline(`M${n(cx)} ${top - 46}V${top - 118}M${n(cx - 10)} ${top - 96}h20`);
-    for (let x = b.x + 12; x < b.x + b.w - 6; x += 12) detail(`<path class="d f" d="M${n(x)} ${top + 10}V${G - 26}"/>`);
-    for (let y = G - 26; y > top + 10; y -= 24) detail(`<path class="d" d="M${b.x + 6} ${n(y)}H${b.x + b.w - 6}"/>`);
-    detail(`<path class="d" d="${rectPath(cx - 16, G - 26, 32, 26)}"/>`);
-    tops[i] = top - 118;
-  }
-  if (b.kind === 'mosque') {
-    // base hall, drum, main dome and half domes, two minarets just outside the hall
-    outline(rectPath(b.x, top, b.w, b.h));
-    for (let x = b.x + 18; x < b.x + b.w - 24; x += 30) detail(`<path class="d" d="${archPath(x, G - 52, 14, 30)}"/>`);
-    outline(rectPath(cx - 72, top - 24, 144, 24));
-    outline(`M${n(cx - 82)} ${top - 24}A82 82 0 0 1 ${n(cx + 82)} ${top - 24}`);
-    outline(`M${n(cx - 132)} ${top}A40 40 0 0 1 ${n(cx - 52)} ${top}M${n(cx + 52)} ${top}A40 40 0 0 1 ${n(cx + 132)} ${top}`);
-    detail(`<path class="d" d="M${n(cx)} ${top - 106}V${top - 138}"/><circle class="d" cx="${n(cx)}" cy="${top - 142}" r="4"/>`);
-    for (const mx of [b.x - 22, b.x + b.w + 10]) {
-      outline(rectPath(mx, G - 336, 12, 336));
-      outline(`M${mx} ${G - 336}L${mx + 6} ${G - 384}L${mx + 12} ${G - 336}`);
-      detail(`<path class="d" d="M${mx - 5} ${G - 270}h22M${mx - 5} ${G - 214}h22"/>`);
+
+  const peaks: { x: number; y: number }[] = []; // building index → highest point
+  const roofs: number[] = []; // building index → right edge of the top mass, where its level mark sits
+
+  city.buildings.forEach((b, i) => {
+    const top = G - b.h;
+    const cx = b.x + b.w / 2;
+    let peak = { x: cx, y: top };
+    let roof = b.x + b.w;
+
+    if (b.kind === 'house') {
+      outline(rectPath(b.x, top, b.w, b.h));
+      outline(`M${b.x - 8} ${top}L${n(cx)} ${top - 52}L${b.x + b.w + 8} ${top}`);
+      dPath(rectPath(b.x + b.w * 0.68, top - 40, 14, 22));
+      dPath(rectPath(cx - 9, G - 32, 18, 32));
+      detail(`<rect class="w" x="${b.x + 14}" y="${top + 22}" width="16" height="18"/><rect class="w" x="${b.x + b.w - 30}" y="${top + 22}" width="16" height="18"/>`);
+      peak.y = top - 52;
     }
-    tops[i] = G - 384;
+    if (b.kind === 'block') {
+      outline(rectPath(b.x, top, b.w, b.h));
+      dPath(`M${b.x} ${top + 8}h${b.w}`);
+      dPath(rectPath(b.x + 12, G - 24, b.w - 24, 24));
+      windowGrid(b.x, top + 8, b.w, G - 34);
+    }
+    if (b.kind === 'stepped') stepped(b, b.h * 0.6, b.h * 0.25, b.w * 0.12, b.w * 0.26);
+    if (b.kind === 'tower') {
+      outline(rectPath(b.x, top, b.w, b.h));
+      outline(rectPath(b.x + b.w * 0.2, top - 46, b.w * 0.6, 46));
+      outline(`M${n(cx)} ${top - 46}V${top - 118}M${n(cx - 10)} ${top - 96}h20`);
+      for (let x = b.x + 12; x < b.x + b.w - 6; x += 12) dPath(`M${n(x)} ${top + 10}V${G - 26}`, 'd f');
+      for (let y = G - 26; y > top + 10; y -= 24) dPath(`M${b.x + 6} ${n(y)}H${b.x + b.w - 6}`);
+      dPath(rectPath(cx - 16, G - 26, 32, 26));
+      peak.y = top - 118;
+    }
+
+    // ---- Istanbul ----
+    if (b.kind === 'mosque') {
+      // base hall, drum, main dome and half domes, two minarets just outside the hall
+      outline(rectPath(b.x, top, b.w, b.h));
+      for (let x = b.x + 18; x < b.x + b.w - 24; x += 30) dPath(archPath(x, G - 52, 14, 30));
+      outline(rectPath(cx - 72, top - 24, 144, 24));
+      outline(`M${n(cx - 82)} ${top - 24}A82 82 0 0 1 ${n(cx + 82)} ${top - 24}`);
+      outline(`M${n(cx - 132)} ${top}A40 40 0 0 1 ${n(cx - 52)} ${top}M${n(cx + 52)} ${top}A40 40 0 0 1 ${n(cx + 132)} ${top}`);
+      detail(`<path class="d" d="M${n(cx)} ${top - 106}V${top - 138}"/><circle class="d" cx="${n(cx)}" cy="${top - 142}" r="4"/>`);
+      for (const mx of [b.x - 22, b.x + b.w + 10]) {
+        outline(rectPath(mx, G - 336, 12, 336));
+        outline(`M${mx} ${G - 336}L${mx + 6} ${G - 384}L${mx + 12} ${G - 336}`);
+        dPath(`M${mx - 5} ${G - 270}h22M${mx - 5} ${G - 214}h22`);
+      }
+      peak.y = G - 384;
+    }
+    if (b.kind === 'galata') {
+      // stone shaft, arched windows, balcony, upper drum, conical cap and finial
+      outline(rectPath(b.x, top, b.w, b.h));
+      for (let y = G - 34; y > top + 10; y -= 34) dPath(`M${b.x} ${y}h${b.w}`, 'd f');
+      for (let y = G - 70; y > top + 30; y -= 58) dPath(archPath(cx - 6, y, 12, 26));
+      dPath(archPath(cx - 12, G - 40, 24, 40));
+      outline(rectPath(b.x - 12, top - 14, b.w + 24, 14));
+      outline(rectPath(b.x + 8, top - 54, b.w - 16, 40));
+      for (let x = b.x + 18; x < b.x + b.w - 20; x += 18) dPath(archPath(x, top - 48, 9, 28));
+      outline(`M${b.x + 2} ${top - 54}L${n(cx)} ${top - 184}L${b.x + b.w - 2} ${top - 54}`);
+      outline(`M${n(cx)} ${top - 184}V${top - 208}`);
+      peak.y = top - 208;
+    }
+
+    // ---- Tashkent ----
+    if (b.kind === 'hotel') {
+      // Hotel Uzbekistan: slab on a podium, the facade a lattice of pointed-arch sun screens, crown band
+      const podium = 34;
+      outline(rectPath(b.x - 14, G - podium, b.w + 28, podium));
+      outline(rectPath(b.x, top, b.w, b.h - podium));
+      dPath(`M${b.x} ${top + 16}h${b.w}`);
+      const floors = 15;
+      const fh = (b.h - podium - 24) / floors;
+      const cw = 18;
+      const cols = Math.floor((b.w - 12) / 22);
+      const x0 = b.x + (b.w - (cols - 1) * 22 - cw) / 2;
+      for (let f = 0; f < floors; f++) {
+        for (let c = 0; c < cols; c++) dPath(pointedPath(x0 + c * 22, top + 22 + f * fh, cw, fh - 4), 'w');
+      }
+      dPath(rectPath(cx - 30, G - podium + 8, 60, podium - 8));
+    }
+    if (b.kind === 'madrasa') {
+      // Kukeldash Madrasa: tall portal (pishtaq) with a pointed niche, arcaded wings, corner towers (guldasta)
+      const pw = 110;
+      const ph = 156;
+      const pl = cx - pw / 2;
+      outline(rectPath(b.x, top, pl - b.x, b.h));
+      outline(rectPath(pl + pw, top, b.x + b.w - pl - pw, b.h));
+      outline(rectPath(pl, G - ph, pw, ph));
+      dPath(rectPath(pl + 10, G - ph + 10, pw - 20, ph - 10));
+      dPath(pointedPath(cx - 32, G - ph + 30, 64, ph - 30));
+      dPath(rectPath(cx - 10, G - 40, 20, 40));
+      dPath(pointedPath(cx - 9, G - 100, 18, 34), 'w');
+      for (const [x0, x1] of [[b.x + 14, pl - 4], [pl + pw + 10, b.x + b.w - 14]]) {
+        for (let x = x0; x + 18 <= x1; x += 28) {
+          dPath(pointedPath(x, G - 32, 18, 32));
+          dPath(pointedPath(x, top + 10, 18, 22), 'w');
+        }
+      }
+      for (const gx of [b.x - 6, b.x + b.w - 10]) {
+        outline(rectPath(gx, G - 118, 16, 118));
+        outline(`M${gx} ${G - 118}A8 11 0 0 1 ${gx + 16} ${G - 118}`);
+        dPath(`M${gx + 8} ${G - 129}V${G - 142}`);
+        dPath(`M${gx} ${G - 92}h16M${gx} ${top}h16`, 'd f');
+      }
+      peak.y = G - ph;
+    }
+    if (b.kind === 'imam') {
+      // Hazrati Imam mosque: arcaded hall, drum, ribbed dome, two 53 m minarets with balconies and lanterns
+      outline(rectPath(b.x, top, b.w, b.h));
+      for (let x = b.x + 14; x + 18 <= b.x + b.w - 10; x += 28) dPath(pointedPath(x, G - 58, 18, 46));
+      dPath(`M${b.x} ${top + 12}h${b.w}`);
+      const dt = top - 28; // drum top
+      outline(rectPath(cx - 62, dt, 124, 28));
+      outline(`M${n(cx - 68)} ${dt}C${n(cx - 68)} ${dt - 72} ${n(cx - 16)} ${dt - 98} ${n(cx)} ${dt - 112}C${n(cx + 16)} ${dt - 98} ${n(cx + 68)} ${dt - 72} ${n(cx + 68)} ${dt}`);
+      for (const k of [-2, -1, 0, 1, 2]) dPath(`M${n(cx + k * 26)} ${dt}Q${n(cx + k * 22)} ${dt - 84} ${n(cx)} ${dt - 112}`, 'd f');
+      for (let x = cx - 52; x < cx + 50; x += 20) dPath(pointedPath(x, dt + 6, 8, 18), 'w');
+      detail(`<path class="d" d="M${n(cx)} ${dt - 112}V${dt - 134}"/><circle class="d" cx="${n(cx)}" cy="${dt - 138}" r="4"/>`);
+      const mh = Math.round(53 * M);
+      for (const mx of [b.x - 34, b.x + b.w + 12]) {
+        outline(`M${mx} ${G}L${mx + 3} ${G - 290}H${mx + 19}L${mx + 22} ${G}`);
+        outline(rectPath(mx - 6, G - 300, 34, 10));
+        outline(rectPath(mx + 3, G - 352, 16, 52));
+        dPath(archPath(mx + 7, G - 344, 8, 30));
+        outline(`M${mx + 1} ${G - 352}A10 16 0 0 1 ${mx + 21} ${G - 352}`);
+        outline(`M${mx + 11} ${G - 368}V${G - mh}`);
+        dPath(`M${mx - 2} ${G - 196}h26M${mx} ${G - 100}h22`, 'd f');
+      }
+      peak = { x: b.x + b.w + 23, y: G - mh };
+    }
+    if (b.kind === 'museum') {
+      // Amir Timur Museum: colonnaded drum, ribbed dome
+      outline(rectPath(b.x, top, b.w, b.h));
+      dPath(`M${b.x} ${top + 14}h${b.w}`);
+      for (let x = b.x + 12; x < b.x + b.w - 6; x += 14) dPath(`M${x} ${top + 14}V${G - 10}`, 'd f');
+      dPath(`M${b.x} ${G - 10}h${b.w}`);
+      const dt = top - 30;
+      outline(rectPath(cx - 44, dt, 88, 30));
+      outline(`M${n(cx - 52)} ${dt}C${n(cx - 52)} ${dt - 52} ${n(cx - 18)} ${dt - 68} ${n(cx)} ${dt - 74}C${n(cx + 18)} ${dt - 68} ${n(cx + 52)} ${dt - 52} ${n(cx + 52)} ${dt}`);
+      for (const k of [-2, -1, 0, 1, 2]) dPath(`M${n(cx + k * 20)} ${dt}Q${n(cx + k * 17)} ${dt - 56} ${n(cx)} ${dt - 74}`, 'd f');
+      for (let x = cx - 36; x < cx + 36; x += 18) dPath(archPath(x, dt + 6, 8, 18), 'w');
+      dPath(`M${n(cx)} ${dt - 74}V${dt - 94}`);
+      peak.y = dt - 94;
+    }
+
+    // ---- Moscow ----
+    if (b.kind === 'stalin') {
+      // Stalinist high-rise: stepped wedding-cake massing, corner pinnacles, crown, spire with star
+      const h1 = b.h * 0.5;
+      const h2 = b.h * 0.3;
+      const a = b.w * 0.17;
+      const c = b.w * 0.35;
+      stepped(b, h1, h2, a, c);
+      roof = b.x + b.w - c;
+      for (const px of [b.x + 6, b.x + b.w - 14, b.x + a + 4, b.x + b.w - a - 12]) {
+        const py = px < b.x + a || px > b.x + b.w - a ? G - h1 : G - h1 - h2;
+        outline(`M${n(px)} ${n(py)}V${n(py - 18)}L${n(px + 4)} ${n(py - 32)}L${n(px + 8)} ${n(py - 18)}V${n(py)}`);
+      }
+      const cw = b.w - 2 * c;
+      outline(rectPath(cx - cw * 0.32, top - 42, cw * 0.64, 42));
+      for (let x = cx - cw * 0.32 + 8; x < cx + cw * 0.32 - 10; x += 14) dPath(archPath(x, top - 34, 7, 24), 'w');
+      outline(`M${n(cx - cw * 0.32)} ${top - 42}L${n(cx)} ${top - 128}L${n(cx + cw * 0.32)} ${top - 42}`);
+      outline(`M${n(cx)} ${top - 128}V${top - 150}`);
+      dPath(starPath(cx, top - 158, 9));
+      dPath(rectPath(cx - 22, G - 34, 44, 34));
+      peak.y = top - 167;
+    }
+    if (b.kind === 'wall') {
+      // Kremlin wall: swallowtail merlons along the top, stone courses
+      let p = `M${b.x} ${G}V${top}`;
+      for (let x = b.x + 4; x + 14 <= b.x + b.w - 4; x += 22) p += `H${x}V${top - 20}L${x + 7} ${top - 12}L${x + 14} ${top - 20}V${top}`;
+      outline(p + `H${b.x + b.w}V${G}`);
+      for (let y = top + 20; y < G; y += 20) dPath(`M${b.x} ${y}h${b.w}`, 'd f');
+      for (let x = b.x + 15; x < b.x + b.w - 10; x += 44) dPath(rectPath(x, top + 6, 4, 10));
+      peak.y = top - 20;
+    }
+    if (b.kind === 'spasskaya') {
+      // Spasskaya Tower: gate body, clock tier with pinnacles, arcaded octagon, tent roof, star at 71 m
+      outline(rectPath(b.x, top, b.w, b.h));
+      dPath(archPath(cx - 20, G - 84, 40, 84));
+      dPath(`M${b.x} ${top + 14}h${b.w}M${b.x} ${G - 120}h${b.w}`);
+      for (const x of [b.x + 16, b.x + b.w - 28]) dPath(archPath(x, G - 200, 12, 40), 'w');
+      const t1 = top - 82;
+      outline(rectPath(b.x + 8, t1, b.w - 16, 82));
+      detail(`<circle class="d" cx="${n(cx)}" cy="${t1 + 40}" r="26"/><circle class="d f" cx="${n(cx)}" cy="${t1 + 40}" r="20"/>`);
+      dPath(`M${n(cx)} ${t1 + 40}V${t1 + 24}M${n(cx)} ${t1 + 40}H${n(cx + 12)}`);
+      for (const px of [b.x + 8, b.x + b.w - 16]) outline(`M${px} ${t1}V${t1 - 22}L${px + 4} ${t1 - 36}L${px + 8} ${t1 - 22}V${t1}`);
+      const t2 = t1 - 60;
+      outline(rectPath(cx - 27, t2, 54, 60));
+      for (const x of [cx - 19, cx - 6, cx + 7]) dPath(archPath(x, t2 + 12, 12, 36));
+      const apex = G - Math.round(71 * M);
+      const tentTop = apex + 44;
+      outline(`M${n(cx - 31)} ${t2}L${n(cx)} ${tentTop}L${n(cx + 31)} ${t2}`);
+      dPath(`M${n(cx - 15)} ${t2}L${n(cx)} ${tentTop}L${n(cx + 15)} ${t2}`, 'd f');
+      outline(`M${n(cx)} ${tentTop}V${apex + 24}`);
+      detail(`<path class="d" d="${starPath(cx, apex + 12, 12)}"/>`);
+      peak.y = apex;
+    }
+    if (b.kind === 'basil') {
+      // St Basil's: arcaded gallery, central tent with lantern, four onion domes on drums of two heights
+      outline(rectPath(b.x, top, b.w, b.h));
+      for (let x = b.x + 14; x + 16 <= b.x + b.w - 10; x += 26) dPath(archPath(x, G - 40, 16, 40));
+      const tb = top - 150; // central drum top
+      outline(rectPath(cx - 26, tb, 52, 150));
+      for (const x of [cx - 16, cx + 4]) dPath(archPath(x, tb + 40, 12, 40), 'w');
+      dPath(`M${n(cx - 26)} ${tb + 16}h52`);
+      const tentTop = tb - 108;
+      outline(`M${n(cx - 32)} ${tb}L${n(cx)} ${tentTop}L${n(cx + 32)} ${tb}`);
+      dPath(`M${n(cx - 12)} ${tb}L${n(cx)} ${tentTop}L${n(cx + 12)} ${tb}`, 'd f');
+      outline(onionPath(cx, tentTop + 2, 22, 30));
+      dPath(`M${n(cx)} ${tentTop - 28}V${tentTop - 42}`);
+      for (const [dx, dh, w] of [[-110, 96, 44], [-58, 140, 50], [58, 140, 50], [110, 96, 44]]) {
+        const x = cx + dx;
+        const y = top - dh;
+        outline(rectPath(x - w * 0.3, y, w * 0.6, dh));
+        for (let k = 0; k < 2; k++) dPath(`M${n(x - w * 0.3)} ${y + 10 + k * 8}h${n(w * 0.6)}`, 'd f');
+        dPath(archPath(x - 5, y + 24, 10, 26), 'w');
+        outline(onionPath(x, y, w, w * 1.15));
+        dPath(`M${n(x)} ${n(y - w * 1.15)}V${n(y - w * 1.15 - 14)}`);
+      }
+      peak.y = tentTop - 42;
+    }
+
+    peaks[i] = peak;
+    roofs[i] = roof;
+  });
+
+  // ---- annotations ------------------------------------------------------------------------------
+  const pre = `cd-${city.id}`; // pattern ids must be unique: all three sheets live in the same page
+
+  // axes
+  city.buildings.forEach((b) => {
+    if (!b.axis) return;
+    const cx = n(b.x + b.w / 2);
+    notes.push(`<path class="axis" d="M${cx} 70V${G}"/><circle class="a" cx="${cx}" cy="52" r="17"/>` + mono(cx, 58, b.axis, 'acc', 'middle'));
+  });
+
+  // ground: line, hatch band, ±0.00
+  notes.push(`<rect x="60" y="${G}" width="${W - 120}" height="26" fill="url(#${pre}-hatch)"/>`);
+  outlines.unshift(`<path class="o ground" pathLength="1" style="--i:0" d="M60 ${G}H${W - 60}"/>`);
+  notes.push(level(76, G, '±0.00'));
+
+  // levels: the landmark's real height at its peak, the secondary building's roof from the drawing
+  const li = city.buildings.findIndex((b) => b.kind === city.landmark.kind);
+  const si = city.buildings.findIndex((b) => b.kind === city.secondary);
+  const sb = city.buildings[si];
+  notes.push(level(peaks[li].x + 6, peaks[li].y, `+${city.landmark.height}`));
+  notes.push(level(roofs[si] + 12, G - sb.h, `+${(sb.h / M).toFixed(2)}`));
+
+  // vertical dimension beside the landmark
+  {
+    const x = city.landmark.dimX;
+    const y1 = peaks[li].y;
+    notes.push(`<path class="a" d="M${x} ${G}V${y1}"/>` + tick(x, G) + tick(x, y1));
+    notes.push(mono(x - 8, (G + y1) / 2, city.landmark.height, 'acc', 'middle', `transform="rotate(-90 ${n(x - 8)} ${n((G + y1) / 2)})"`));
   }
-  if (b.kind === 'galata') {
-    // stone shaft, arched windows, balcony, upper drum, conical cap and finial
-    outline(rectPath(b.x, top, b.w, b.h));
-    for (let y = G - 34; y > top + 10; y -= 34) detail(`<path class="d f" d="M${b.x} ${y}h${b.w}"/>`);
-    for (let y = G - 70; y > top + 30; y -= 58) detail(`<path class="d" d="${archPath(cx - 6, y, 12, 26)}"/>`);
-    detail(`<path class="d" d="${archPath(cx - 12, G - 40, 24, 40)}"/>`);
-    outline(rectPath(b.x - 12, top - 14, b.w + 24, 14));
-    outline(rectPath(b.x + 8, top - 54, b.w - 16, 40));
-    for (let x = b.x + 18; x < b.x + b.w - 20; x += 18) detail(`<path class="d" d="${archPath(x, top - 48, 9, 28)}"/>`);
-    outline(`M${b.x + 2} ${top - 54}L${n(cx)} ${top - 184}L${b.x + b.w - 2} ${top - 54}`);
-    outline(`M${n(cx)} ${top - 184}V${top - 208}`);
-    tops[i] = top - 208;
+
+  // dimension chain under the ground: building widths in metres
+  {
+    const y = 672;
+    const xs = city.buildings.flatMap((b) => [b.x, b.x + b.w]);
+    notes.push(`<path class="a" d="M${xs[0] - 20} ${y}H${xs[xs.length - 1] + 20}"/>`);
+    xs.forEach((x) => notes.push(tick(x, y) + `<path class="a f" d="M${x} ${G + 32}V${y + 8}"/>`));
+    city.buildings.forEach((b) => notes.push(mono(b.x + b.w / 2, y - 10, (b.w / M).toFixed(2), 'small', 'middle')));
   }
-});
 
-// ---- annotations --------------------------------------------------------------------------------
-const mono = (x: number, y: number, text: string, cls = '', anchor = 'start', extra = '') =>
-  `<text class="t ${cls}" x="${n(x)}" y="${n(y)}" text-anchor="${anchor}" ${extra}>${esc(text)}</text>`;
-const tick = (x: number, y: number) => `<path class="a" d="M${n(x - 6)} ${n(y + 6)}L${n(x + 6)} ${n(y - 6)}"/>`;
-const level = (x: number, y: number, label: string) =>
-  `<path class="a" d="M${x - 8} ${y - 13}H${x + 8}L${x} ${y}Z"/><path class="a" d="M${x} ${y}H${x + 92}"/>` + mono(x + 14, y - 8, label, 'acc');
-
-// axes
-city.forEach((b, i) => {
-  if (!b.axis) return;
-  const cx = n(b.x + b.w / 2);
-  notes.push(`<path class="axis" d="M${cx} 70V${G}"/><circle class="a" cx="${cx}" cy="52" r="17"/>` + mono(cx, 58, b.axis, 'acc', 'middle'));
-});
-
-// ground: line, hatch band, ±0.00
-notes.push(`<rect x="60" y="${G}" width="${W - 120}" height="26" fill="url(#hatch)"/>`);
-outlines.unshift(`<path class="o ground" pathLength="1" style="--i:0" d="M60 ${G}H${W - 60}"/>`);
-notes.push(level(76, G, '±0.00'));
-
-// levels on the tall landmarks
-const galata = city.findIndex((b) => b.kind === 'galata');
-const tower = city.findIndex((b) => b.kind === 'tower');
-notes.push(level(city[galata].x + city[galata].w / 2 + 6, tops[galata], '+66.90'));
-notes.push(level(city[tower].x + city[tower].w + 12, G - city[tower].h, `+${(city[tower].h / M).toFixed(2)}`));
-
-// vertical dimension beside Galata
-{
-  const x = city[galata].x + city[galata].w + 30;
-  const y1 = tops[galata];
-  notes.push(`<path class="a" d="M${x} ${G}V${y1}"/>` + tick(x, G) + tick(x, y1));
-  notes.push(mono(x - 8, (G + y1) / 2, '66.90', 'acc', 'middle', `transform="rotate(-90 ${n(x - 8)} ${n((G + y1) / 2)})"`));
-}
-
-// dimension chain under the ground: building widths in metres
-{
-  const y = 672;
-  const xs = city.flatMap((b) => [b.x, b.x + b.w]);
-  notes.push(`<path class="a" d="M${xs[0] - 20} ${y}H${xs[xs.length - 1] + 20}"/>`);
-  xs.forEach((x) => notes.push(tick(x, y) + `<path class="a f" d="M${x} ${G + 32}V${y + 8}"/>`));
-  city.forEach((b) => notes.push(mono(b.x + b.w / 2, y - 10, (b.w / M).toFixed(2), 'small', 'middle')));
-}
-
-// scale bar 0–50 m
-{
-  const x0 = 430;
-  const y = 728;
-  const seg = 10 * M;
-  for (let k = 0; k < 5; k++) {
-    wide.push(`<rect class="${k % 2 ? 'sb' : 'sb fill'}" x="${n(x0 + k * seg)}" y="${y}" width="${n(seg)}" height="9"/>`);
-    wide.push(mono(x0 + k * seg, y + 30, String(k * 10), 'small', 'middle'));
+  // scale bar 0–50 m
+  {
+    const x0 = 430;
+    const y = 728;
+    const seg = 10 * M;
+    for (let k = 0; k < 5; k++) {
+      wide.push(`<rect class="${k % 2 ? 'sb' : 'sb fill'}" x="${n(x0 + k * seg)}" y="${y}" width="${n(seg)}" height="9"/>`);
+      wide.push(mono(x0 + k * seg, y + 30, String(k * 10), 'small', 'middle'));
+    }
+    wide.push(mono(x0 + 5 * seg, y + 30, '50 m', 'small', 'middle'));
   }
-  wide.push(mono(x0 + 5 * seg, y + 30, '50 m', 'small', 'middle'));
-}
 
-// north arrow
-wide.push(
-  `<g transform="translate(1880 128)"><circle class="a" r="26"/><path class="north" d="M0 -22L9 14L0 7L-9 14Z"/>${mono(0, -34, 'N', 'acc', 'middle')}</g>`,
-);
+  // north arrow
+  wide.push(
+    `<g transform="translate(1880 128)"><circle class="a" r="26"/><path class="north" d="M0 -22L9 14L0 7L-9 14Z"/>${mono(0, -34, 'N', 'acc', 'middle')}</g>`,
+  );
 
-// title lines (kept inside the area visible on phones)
-wide.push(mono(1716, 728, d.title.toLocaleUpperCase(locale), 'title', 'end'));
-wide.push(mono(1716, 756, `${d.scale} · ${d.sheet}`, 'small', 'end'));
+  // title lines (kept inside the area visible on phones)
+  wide.push(mono(1716, 728, d[city.id].title.toLocaleUpperCase(locale), 'title', 'end'));
+  wide.push(mono(1716, 756, `${d.scale} · ${d.sheet}`, 'small', 'end'));
 
-const svg = `
+  const svg = `
 <defs>
-  <pattern id="grid-minor" width="20" height="20" patternUnits="userSpaceOnUse"><path class="g1" d="M20 0H0V20"/></pattern>
-  <pattern id="grid-major" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="url(#grid-minor)"/><path class="g2" d="M100 0H0V100"/></pattern>
-  <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path class="h" d="M0 0V12"/></pattern>
+  <pattern id="${pre}-grid-minor" width="20" height="20" patternUnits="userSpaceOnUse"><path class="g1" d="M20 0H0V20"/></pattern>
+  <pattern id="${pre}-grid-major" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="url(#${pre}-grid-minor)"/><path class="g2" d="M100 0H0V100"/></pattern>
+  <pattern id="${pre}-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path class="h" d="M0 0V12"/></pattern>
 </defs>
-<rect width="${W}" height="${H}" fill="url(#grid-major)"/>
+<rect width="${W}" height="${H}" fill="url(#${pre}-grid-major)"/>
 <g class="details">${details.join('')}</g>
 <g class="outlines">${outlines.join('')}</g>
 <g class="notes">${notes.join('')}<g class="wide">${wide.join('')}</g></g>`;
+  return { svg, strokes: order };
+}
+
+// every sheet draws in the same total time as Beyoğlu, however many strokes it has
+const drawn = cities.map((c) => ({ id: c.id, alt: d[c.id].alt, ...drawCity(c) }));
+const step = (strokes: number) => `${n((70 * (drawn[0].strokes - 1)) / (strokes - 1))}ms`;
+const sheets = drawn.map((s) => ({ ...s, step: step(s.strokes) }));
 ---
 
-<figure class="city-drawing" role="img" aria-label={d.alt}>
-  <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" set:html={svg} />
-</figure>
+<!-- pick the sheet before the figures are parsed, so the wrong city never flashes -->
+<script is:inline>
+  (() => {
+    const cities = ['istanbul', 'tashkent', 'moscow'];
+    // Russia's IANA zones (Crimea's Europe/Simferopol deliberately left out)
+    const ru = 'Kaliningrad Moscow Kirov Volgograd Astrakhan Saratov Ulyanovsk Samara'.split(' ').map((z) => 'Europe/' + z)
+      .concat('Yekaterinburg Omsk Novosibirsk Barnaul Tomsk Novokuznetsk Krasnoyarsk Irkutsk Chita Yakutsk Khandyga Vladivostok Ust-Nera Magadan Sakhalin Srednekolymsk Kamchatka Anadyr'.split(' ').map((z) => 'Asia/' + z));
+    let city = '';
+    try {
+      city = new URLSearchParams(location.search).get('city') || '';
+      if (!cities.includes(city)) {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        city = tz === 'Asia/Tashkent' || tz === 'Asia/Samarkand' ? 'tashkent' : ru.includes(tz) ? 'moscow' : '';
+      }
+    } catch {}
+    if (city) document.documentElement.dataset.city = city;
+  })();
+</script>
+{sheets.map((s) => (
+  <figure class="city-drawing" data-city={s.id} style={`--step:${s.step}`} role="img" aria-label={s.alt}>
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" set:html={s.svg} />
+  </figure>
+))}
 
 <style>
   .city-drawing {
@@ -214,6 +485,13 @@ const svg = `
     border: 1px solid var(--rule);
     border-bottom: 0;
   }
+  /* one sheet at a time: Beyoğlu unless the script above chose another city */
+  .city-drawing:not([data-city='istanbul']),
+  :global(html[data-city='tashkent']) .city-drawing:not([data-city='tashkent']),
+  :global(html[data-city='moscow']) .city-drawing:not([data-city='moscow']) { display: none; }
+  :global(html[data-city='tashkent']) .city-drawing[data-city='tashkent'],
+  :global(html[data-city='moscow']) .city-drawing[data-city='moscow'] { display: block; }
+
   svg { display: block; width: 100%; height: 100%; }
 
   .city-drawing :global(.g1) { fill: none; stroke: currentColor; stroke-width: 0.8; opacity: 0.07; }
@@ -243,7 +521,7 @@ const svg = `
       stroke-dasharray: 1;
       stroke-dashoffset: 1;
       animation: draw 1.1s cubic-bezier(0.5, 0, 0.3, 1) forwards;
-      animation-delay: calc(var(--i) * 70ms);
+      animation-delay: calc(var(--i) * var(--step, 70ms));
     }
     .city-drawing :global(.details),
     .city-drawing :global(.notes) {
@@ -258,7 +536,7 @@ const svg = `
   @media (max-width: 900px) {
     .city-drawing { aspect-ratio: 16 / 9; }
   }
-  /* Phones: a taller crop zooms in on the mosque, tower block and Galata; edge furniture would be cut, so it goes. */
+  /* Phones: a taller crop zooms in on the landmarks in the middle; edge furniture would be cut, so it goes. */
   @media (max-width: 600px) {
     .city-drawing { aspect-ratio: 4 / 3; }
     .city-drawing :global(.wide) { display: none; }
